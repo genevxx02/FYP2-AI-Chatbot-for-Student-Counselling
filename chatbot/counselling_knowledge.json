@@ -1,0 +1,232 @@
+{
+  "intents": {
+    "greeting": {
+      "positive": [
+        "Hello! Good to hear from you. What would you like to talk about today?",
+        "Hi there — I am here to support you. How are things going for you right now?",
+        "Hey! Thanks for stopping by. Is there something on your mind you want to explore?"
+      ],
+      "neutral": [
+        "Hello! I am here to listen. What brings you here today?",
+        "Hi — feel free to share whatever is on your mind. Where would you like to start?",
+        "Hey there. I am ready when you are — what would be most helpful to discuss?"
+      ],
+      "negative": [
+        "Hello — I am glad you reached out even if things feel heavy. What has been weighing on you lately?",
+        "Hi there. You do not have to go through a tough day alone. What would help to talk about first?",
+        "Hey — thank you for connecting. What feels hardest right now?"
+      ]
+    },
+    "emotional_support": {
+      "negative": [
+        "It sounds like you're carrying a lot right now, and that's completely understandable. Try breaking your workload into three small tasks and focus on just one for the next hour. What's the single thing causing you the most pressure today?",
+        "I can hear how overwhelmed you're feeling, and you don't have to handle everything at once. Take five slow breaths and write down everything on your mind, then circle only what needs attention today. Which task feels heaviest on your shoulders?",
+        "Stress can make everything feel urgent, but you're doing your best in a tough situation. Schedule a 15-minute break without your phone and step away from your desk. What part of your day feels most exhausting?",
+        "You're not alone in feeling this stretched thin — many students go through exactly this. Use a simple priority list: must do, should do, can wait. What would happen if you gave yourself permission to pause for ten minutes?",
+        "It makes sense that you're feeling tense when so much is demanding your energy. Try the Pomodoro technique — 25 minutes of focused work, then a five-minute rest. How long has this level of stress been building up?",
+        "I hear you, and it's okay to admit that things feel like too much right now. Talk to a friend or classmate about how you're feeling — sharing the load often helps. Is there someone you trust who you could reach out to?",
+        "Feeling stressed doesn't mean you're failing; it means you care about doing well. Drink a glass of water, stretch your shoulders, and pick one manageable goal for tonight. What outcome would make today feel a little lighter?",
+        "Your feelings are valid, and it's brave of you to acknowledge them. Block out distractions for one focused study session instead of trying to do everything at once. What's been keeping you up at night lately?",
+        "When pressure builds up, even small steps forward matter more than you think. Write a short to-do list with no more than three items and celebrate completing each one. Which deadline is weighing on you the most?",
+        "I can tell this has been draining, and you deserve some compassion right now. Go for a short walk or listen to calming music before returning to your work. What usually helps you reset when stress hits?",
+        "Stress often comes from trying to control too many things at the same time. Identify one thing you can delegate, postpone, or simplify this week. Is there anything on your plate that isn't truly essential?",
+        "You're handling more than you give yourself credit for. Set a clear boundary — decide when you'll stop studying tonight and stick to it. How many hours have you been pushing yourself without a real break?",
+        "It's okay to feel frazzled when expectations pile up around you. Try journaling for five minutes about what's stressing you — getting it out of your head can bring clarity. What thought keeps looping in your mind?",
+        "I want you to know that feeling stressed is a signal, not a weakness. Break one big assignment into smaller chunks and tackle the easiest piece first. What subject or project is causing the most worry?",
+        "You don't have to be perfect to be enough — progress counts. Use a timer to work in short bursts rather than marathon sessions that burn you out. When did you last do something just for yourself?",
+        "Hearing how much pressure you're under, I'd encourage you to be gentle with yourself today. Eat a proper meal and get some fresh air before diving back into work. What's one kind thing you could do for yourself right now?",
+        "Stress can cloud your thinking, but you're still capable of finding a way through. Review your schedule and remove one non-essential commitment if possible. Are you saying yes to too many things at once?",
+        "It sounds exhausting to feel constantly on edge like this. Practice a grounding exercise: name five things you can see, four you can touch, three you can hear. What triggered this stress for you today?",
+        "You're showing real strength by talking about this instead of pushing it down. Reach out to a lecturer or counsellor if deadlines feel impossible — asking for help is a smart move. Have you considered speaking to someone at your university?",
+        "Feeling overwhelmed is tough, but you won't feel this way forever. Plan your tomorrow tonight — lay out clothes, pack your bag, and set one clear intention. What would a calmer version of today look like for you?",
+        "I hear the weight in your words, and I want you to know it's okay to slow down. Try alternating between study and rest in 30-minute blocks rather than pushing through fatigue. What's the one thing you'd like to feel less stressed about?",
+        "Many students feel exactly what you're describing during busy periods. Limit caffeine in the afternoon and aim for a consistent sleep time tonight. How has your sleep been lately?",
+        "Anxiety can feel really intense, and I'm glad you're sharing this with me. Try grounding yourself by naming five things you can see around you right now. What situation is making you feel most anxious?",
+        "It sounds like your mind has been racing, and that's a hard place to be. Practice slow breathing — inhale for four counts, hold for four, exhale for six. When did you first notice this anxious feeling?",
+        "Feeling anxious doesn't mean something terrible will happen — it means your body is on high alert. Write down your worry and ask yourself: is this a fact or a fear? What's the thought that keeps coming back?",
+        "I hear how unsettling this feels, and your reaction makes complete sense. Limit how much news or social media you consume when anxiety spikes. Is there a specific trigger you've noticed?",
+        "You're not alone in feeling this way — anxiety is very common among students. Try a short mindfulness exercise: focus on your breath for two minutes without judging your thoughts. How long have you been feeling like this?",
+        "It takes courage to admit when anxiety is getting hard to manage. Break the situation into smaller steps and focus only on the very next one. What feels scariest about what's ahead?",
+        "Anxiety often exaggerates worst-case scenarios in our minds. Challenge one anxious thought by asking: what evidence do I have for and against this? Can you describe what's going through your mind right now?",
+        "I can sense how uncomfortable this must feel in your body. Progressive muscle relaxation — tensing and releasing each muscle group — can help calm your nervous system. Where do you feel the anxiety most — chest, stomach, or somewhere else?",
+        "Your feelings are valid, and talking about them is a healthy step. Create a simple worry window — set aside ten minutes to write worries down, then close the notebook. What would help you feel even slightly safer right now?",
+        "When anxiety hits, it can feel like you're losing control, but you're still here and you're still coping. Go for a gentle walk and focus on the sensation of your feet on the ground. Have you experienced anxiety like this before?",
+        "It's okay to feel nervous before big moments — many people do. Prepare what you can, then remind yourself that you've handled difficult things before. Is this anxiety about something specific coming up?",
+        "I want you to know that anxious thoughts aren't facts, even when they feel very real. Talk back to the worry with a compassionate voice: I'm doing my best, and that's enough. What would you say to a friend feeling this way?",
+        "Anxiety thrives in uncertainty, so giving yourself structure can help. Plan one small enjoyable activity today — a favourite snack, a song, a short call with a friend. What's one thing that usually comforts you?",
+        "Hearing how worried you are, I'd suggest stepping away from the situation for a few minutes to reset. Splash cold water on your face or hold an ice cube — it can interrupt the anxiety cycle. What happened just before you started feeling this way?",
+        "You don't have to fight anxiety alone — reaching out is a sign of strength. Consider speaking with a campus counsellor who understands student anxiety. Would you be open to exploring professional support?",
+        "Feeling on edge is exhausting, and you deserve relief from that tension. Reduce caffeine and sugar today, as they can worsen anxious feelings. How has your body been reacting — restlessness, tight chest, or trouble sleeping?",
+        "It's brave to name your anxiety instead of pretending everything is fine. Use the 5-4-3-2-1 technique to anchor yourself in the present moment. Is this anxiety about the past, present, or something in the future?",
+        "Anxiety can make you feel isolated, but many students share this experience. Join a study group or talk to someone you trust about how you're feeling. Who in your life makes you feel calm and supported?",
+        "I hear you, and I want to remind you that this feeling will pass even if it doesn't feel that way now. Write a list of things that have gone well recently, no matter how small. What's one positive thing that happened this week?",
+        "Worrying shows you care about outcomes, but it doesn't have to control your day. Set a timer for ten minutes of productive action on the thing you're anxious about, then stop. What outcome are you most afraid of?",
+        "Your anxiety is real, but so is your ability to cope with difficult moments. Listen to calming music or a guided meditation before bed tonight. What time of day does your anxiety feel strongest?",
+        "It sounds like your nervous system needs a break — and that's completely okay. Avoid checking your phone first thing in the morning and start with three deep breaths instead. What would a calmer evening routine look like for you?",
+        "I'm really sorry you're going through this — it takes strength to reach out when things feel heavy. Try to do one small thing today, like opening a window or eating a proper meal. How long have you been feeling this way?",
+        "What you're describing sounds deeply painful, and you don't have to face it alone. Text or call someone you trust, even if it's just to say you're having a hard day. Is there someone in your life you feel safe talking to?",
+        "Feeling low for extended periods is exhausting, and your feelings are completely valid. Go outside for five minutes of fresh air, even if you don't feel like it — small actions can shift mood slightly. What's been the hardest part of your days lately?",
+        "I hear the heaviness in your words, and I want you to know you're not a burden for feeling this way. Write down three things you're grateful for, however small — a meal, a song, a kind word. Can you tell me more about what's been weighing on you?",
+        "Depression can make everything feel pointless, but your life still matters deeply. Set one tiny goal for today — shower, brush teeth, or reply to one message. What's one thing that used to bring you joy?",
+        "It sounds like you've been carrying sadness for a while, and that is incredibly hard. Avoid isolating completely — even a brief conversation with a friend can help. Have you been spending a lot of time alone recently?",
+        "You're showing courage by sharing something this personal with me. Consider speaking with a mental health professional — depression responds well to support and treatment. Have you ever talked to a counsellor before?",
+        "When everything feels grey, even getting through the day is an achievement. Be kind to yourself and lower your expectations — surviving the day is enough sometimes. What does a typical day look like for you right now?",
+        "I want you to know that feeling hopeless doesn't mean things will never improve. Move your body gently — a short walk, stretching, or dancing to one song. What activities have you stopped doing that you used to enjoy?",
+        "Depression lies to us about our worth, but those thoughts aren't the full truth. Challenge one negative thought by asking: would I say this to a friend? What's the most persistent negative thought you've been having?",
+        "It makes sense that you'd feel drained when sadness takes up so much space. Establish a simple routine — wake up, eat, rest at similar times each day. How has your sleep and appetite been?",
+        "You're not weak for struggling — depression is a real and treatable experience. Reach out to Talian Kasih 15999 or a campus support service if you need someone to talk to. Would it help to know about local support resources?",
+        "I can hear how much pain you're in, and I'm glad you're not keeping it all inside. Limit alcohol and substances, as they can deepen low moods. Have you noticed anything that makes the sadness worse?",
+        "Some days just surviving is enough, and that's okay. Celebrate micro-wins — getting out of bed, drinking water, sending one text. What's the smallest step you feel you could take today?",
+        "Feeling empty or numb is a common part of depression, and it's not your fault. Listen to music that matches your mood first, then gradually shift to something slightly uplifting. Do you prefer talking, writing, or quiet time when you're low?",
+        "Your experience matters, and you deserve compassion — especially from yourself. Write a letter to yourself as if you were comforting a close friend. What would you want someone to say to you right now?",
+        "Depression can make the future feel dark, but support can genuinely help things shift. Ask a trusted person to check in on you once a day this week. Is there anyone you'd feel comfortable asking?",
+        "I hear you, and I want to gently remind you that this feeling is not permanent, even when it feels endless. Spend ten minutes in sunlight or near a bright window if you can. What time of day do you feel lowest?",
+        "It's okay to not be okay — you don't have to pretend otherwise. Reduce social media use if comparison is making you feel worse. Is there something specific that triggered this low period?",
+        "You matter, and your story isn't over. Keep a mood journal for a few days to notice patterns and triggers. Would you be willing to try tracking how you feel each morning?",
+        "Sadness this deep is hard to carry alone, and reaching out is a brave first step. Do one act of self-care today — warm shower, favourite food, or comfortable clothes. What usually makes you feel even a little better?",
+        "I'm here with you in this moment, and you don't need to have all the answers. Focus on the next hour, not the next month — what's one manageable thing you can do right now?",
+        "It's completely normal to lose motivation sometimes — you're not lazy, you're human. Start with a two-minute task related to your goal; momentum often follows action. What's the thing you've been putting off the longest?",
+        "I hear how stuck you're feeling, and that frustration is understandable. Break your goal into the smallest possible first step and commit to just that one. What originally motivated you to start this journey?",
+        "Losing drive doesn't mean you've failed — it often means you need rest or a new approach. Reward yourself after completing even a tiny task, like a snack or a short break. What reward would feel meaningful to you?",
+        "Motivation comes and goes, but discipline and small habits can carry you through low periods. Set a timer for ten minutes and work only until it rings — you can stop after that. How long have you been feeling unmotivated?",
+        "It sounds like you're being hard on yourself, and that inner critic can drain your energy. Write down why your goal matters to you and read it when motivation dips. What outcome are you working toward?",
+        "Everyone struggles with motivation at some point — especially when tasks feel overwhelming. Change your environment: study in a library or café instead of your room. Where do you usually try to get things done?",
+        "You're capable of more than you feel right now, even if it doesn't seem that way. Pair a task you dislike with something enjoyable — music, a favourite drink, or a podcast. What task feels hardest to start?",
+        "Feeling unmotivated can be a sign you need rest, not that you're giving up. Take a proper break without guilt, then return with a fresh ten-minute sprint. When did you last take a real day off?",
+        "I want to encourage you — progress isn't always linear, and setbacks are part of growth. Track your wins in a notebook, no matter how small. What's one thing you accomplished recently, even if it felt minor?",
+        "Procrastination often comes from fear of not doing well enough, not from laziness. Name the fear behind the delay — perfectionism, failure, or boredom. What do you think is really holding you back?",
+        "You don't need to feel motivated to begin — starting often creates motivation. Tell a friend your goal for today and ask them to check in on you. Would accountability from someone else help?",
+        "It's okay to feel uninspired sometimes; it doesn't define your potential. Visualize how you'll feel after completing the task, not just the effort it takes. What would finishing this mean for you?",
+        "Hearing that you've lost your spark, I'd suggest revisiting your 'why' — the reason this matters to you. Remove distractions from your workspace for one focused session. What's distracting you the most right now?",
+        "Motivation grows from action more than the other way around. Use the two-minute rule: if it takes less than two minutes, do it immediately. What's the quickest task on your list?",
+        "You're not alone in feeling like giving up — many students hit this wall. Celebrate progress over perfection and adjust your expectations if they're too high. Are your goals realistic for where you are right now?",
+        "Sometimes we lose motivation because we're burned out, not because we've stopped caring. Prioritize sleep and nutrition before pushing harder on work. How have you been taking care of your basic needs?",
+        "I believe you can find your way back to momentum, one step at a time. Create a playlist or routine that signals 'work time' to your brain. Do you have a morning or evening routine that helps?",
+        "Feeling stuck is temporary, even when it feels permanent. Ask yourself: what's the smallest version of this task I can do right now? What would 'good enough' look like instead of perfect?",
+        "Your worth isn't measured by productivity — you're valuable even on low-energy days. Do one kind thing for future-you, like preparing notes or laying out materials. What would make tomorrow easier?",
+        "It takes honesty to admit you've lost drive, and that's the first step toward change. Join a study group or body-doubling session online to work alongside others. Would working with others help you stay on track?",
+        "Motivation often returns after we stop waiting for it and start anyway. Set three non-negotiable priorities for today and ignore everything else until they're done. What three things matter most this week?",
+        "I hear you, and I want to remind you that you've overcome hard patches before. Look back at a time you pushed through — what helped you then? Could you try that approach again now?"
+      ],
+      "neutral": [
+        "Thank you for sharing that with me — it means a lot that you trust me with how you're feeling. Take a moment to breathe slowly and check in with yourself before deciding your next step. What's on your mind that you'd like to explore further?",
+        "I'm here to listen without judgment, and whatever you're feeling is welcome here. Try writing down your thoughts for a few minutes to help organize what's going on inside. How can I best support you right now?",
+        "It sounds like you're going through something meaningful, and I appreciate you opening up. Do one small act of self-care today — water, rest, or a moment of quiet. Would you like to tell me more about what's been happening?",
+        "You're not alone in whatever you're facing, and reaching out is a positive step. Focus on what you can control today rather than everything at once. What would feel most helpful to talk about next?",
+        "I hear you, and your experience matters. Consider talking to someone you trust about what you're going through. Is there anything specific you'd like guidance on today?",
+        "Thank you for being honest about how you're feeling — that takes courage. Take things one step at a time rather than trying to solve everything at once. What's been the highlight and the hardest part of your week?"
+      ],
+      "positive": [
+        "It is good to hear a lighter tone from you. Keep noticing what is going well, even in small ways. What feels better today?",
+        "That sounds encouraging. Building on positive moments can help during harder weeks. What helped shift your mood?"
+      ]
+    },
+    "academic_help": {
+      "negative": [
+        "Academic challenges can feel really discouraging, but asking for help is a smart strategy. Review your syllabus and identify which topics need the most attention first. Which subject is giving you the most trouble?",
+        "I hear your frustration with your studies, and many students feel the same way at some point. Try active recall — close your notes and test yourself on what you remember. What exam or assignment are you preparing for?",
+        "Struggling with coursework doesn't mean you're not capable — it may mean you need a different approach. Visit your lecturer's office hours with specific questions prepared. Have you tried reaching out to your professor or tutor?",
+        "It's brave to admit when schoolwork feels overwhelming. Create a weekly study schedule with dedicated blocks for each subject. How many subjects are you juggling right now?",
+        "You're not alone in finding university work challenging — support is available. Form a study group with classmates to review material together. Would studying with others help you stay on track?",
+        "I can tell you're putting pressure on yourself academically, and that stress is understandable. Use the Feynman technique — explain the topic out loud as if teaching someone else. Which concept has been hardest to grasp?",
+        "Academic setbacks are part of learning, not proof of failure. Break large assignments into sections with mini-deadlines before the final due date. What's the next deadline you're facing?",
+        "Getting help with studies shows maturity, not weakness. Check if your university offers tutoring, writing centres, or peer mentoring. Have you explored campus academic support services?",
+        "It sounds like you're working hard but not seeing the results you want yet. Switch study methods — if reading isn't working, try videos, flashcards, or practice questions. How do you usually study?",
+        "Your effort matters, even when grades don't reflect it immediately. Summarize each lecture within 24 hours while the material is still fresh. Which class has the most content to catch up on?",
+        "Academic pressure is real, and you're doing your best in a demanding environment. Prioritize tasks by due date and difficulty — tackle urgent items first. What's due soonest on your calendar?",
+        "I want to encourage you — understanding builds over time with consistent effort. Use spaced repetition apps to review key terms and concepts regularly. Are you studying in long cram sessions or shorter daily blocks?",
+        "Feeling lost in class is more common than you think — you're not the only one. Email your lecturer with a clear question about the material you're stuck on. What topic would you ask about if you had the chance?",
+        "Good study habits often matter more than raw intelligence. Find a quiet, consistent study spot and keep your phone in another room. What's your biggest distraction when trying to study?",
+        "It's okay to feel behind — you can still catch up with a focused plan. List every pending assignment and estimate time needed for each. How far behind do you feel right now?",
+        "Academic success isn't about never struggling — it's about finding resources when you do. Watch supplementary videos or use Khan Academy for difficult topics. Which subject would benefit from extra explanation?",
+        "I hear that grades and exams are weighing on you, and that's a heavy load. Practice past exam papers under timed conditions to build confidence. Do you have access to previous years' exam questions?",
+        "You're capable of improving with the right support and strategies. Ask a high-performing classmate how they approach the subject — most people are happy to share tips. Would you feel comfortable asking a peer for advice?"
+      ],
+      "neutral": [
+        "Academic challenges can feel really discouraging, but asking for help is a smart strategy. Review your syllabus and identify which topics need the most attention first. Which subject is giving you the most trouble?",
+        "I hear your frustration with your studies, and many students feel the same way at some point. Try active recall — close your notes and test yourself on what you remember. What exam or assignment are you preparing for?",
+        "Struggling with coursework doesn't mean you're not capable — it may mean you need a different approach. Visit your lecturer's office hours with specific questions prepared. Have you tried reaching out to your professor or tutor?",
+        "It's brave to admit when schoolwork feels overwhelming. Create a weekly study schedule with dedicated blocks for each subject. How many subjects are you juggling right now?",
+        "You're not alone in finding university work challenging — support is available. Form a study group with classmates to review material together. Would studying with others help you stay on track?",
+        "I can tell you're putting pressure on yourself academically, and that stress is understandable. Use the Feynman technique — explain the topic out loud as if teaching someone else. Which concept has been hardest to grasp?",
+        "Academic setbacks are part of learning, not proof of failure. Break large assignments into sections with mini-deadlines before the final due date. What's the next deadline you're facing?",
+        "Getting help with studies shows maturity, not weakness. Check if your university offers tutoring, writing centres, or peer mentoring. Have you explored campus academic support services?",
+        "It sounds like you're working hard but not seeing the results you want yet. Switch study methods — if reading isn't working, try videos, flashcards, or practice questions. How do you usually study?",
+        "Your effort matters, even when grades don't reflect it immediately. Summarize each lecture within 24 hours while the material is still fresh. Which class has the most content to catch up on?",
+        "Academic pressure is real, and you're doing your best in a demanding environment. Prioritize tasks by due date and difficulty — tackle urgent items first. What's due soonest on your calendar?",
+        "I want to encourage you — understanding builds over time with consistent effort. Use spaced repetition apps to review key terms and concepts regularly. Are you studying in long cram sessions or shorter daily blocks?",
+        "Feeling lost in class is more common than you think — you're not the only one. Email your lecturer with a clear question about the material you're stuck on. What topic would you ask about if you had the chance?",
+        "Good study habits often matter more than raw intelligence. Find a quiet, consistent study spot and keep your phone in another room. What's your biggest distraction when trying to study?",
+        "It's okay to feel behind — you can still catch up with a focused plan. List every pending assignment and estimate time needed for each. How far behind do you feel right now?",
+        "Academic success isn't about never struggling — it's about finding resources when you do. Watch supplementary videos or use Khan Academy for difficult topics. Which subject would benefit from extra explanation?",
+        "I hear that grades and exams are weighing on you, and that's a heavy load. Practice past exam papers under timed conditions to build confidence. Do you have access to previous years' exam questions?",
+        "You're capable of improving with the right support and strategies. Ask a high-performing classmate how they approach the subject — most people are happy to share tips. Would you feel comfortable asking a peer for advice?",
+        "Study burnout can hurt performance — rest is part of academic success. Take a 10-minute break every 50 minutes to maintain focus and retention. How many hours have you been studying without stopping?",
+        "Confusion in class often clears up once you revisit the material differently. Rewrite your notes in your own words instead of copying slides verbatim. When did you last review the material you're struggling with?",
+        "Your academic journey has ups and downs — this challenge is one chapter, not the whole story. Set a specific study goal for tonight, like completing one chapter or ten practice questions. What would make you feel more prepared?",
+        "Seeking academic help is one of the best investments you can make in your future. Book a session with a tutor or academic advisor this week. What's the one grade or subject you'd most like to improve?"
+      ],
+      "positive": [
+        "Sounds like your study efforts are paying off. Keep using methods that work for you. What subject are you feeling confident about?",
+        "That is great progress academically. Consistency matters more than perfection. What goal are you working toward next?"
+      ]
+    },
+    "personal_problem": {
+      "negative": [
+        "Relationship and personal struggles can hurt deeply, and your feelings make sense. Focus on one honest conversation you could have with someone you trust. Who feels safest to talk to?",
+        "When personal problems pile up, it is easy to feel isolated. Write down what you need — space, clarity, or support — before deciding your next step. What part of this situation hurts most?",
+        "Conflict with people we care about is exhausting. Take a pause before reacting, then choose one calm message or boundary to express. What outcome would feel fairest to you?",
+        "Feeling lonely or misunderstood is painful. Reach out to one person today, even with a simple check-in text. What has made this feel harder recently?",
+        "Personal setbacks do not define your worth. Identify one need you can meet today — rest, food, or a walk. What would help you feel steadier right now?"
+      ],
+      "neutral": [
+        "Personal issues can be tricky to navigate. Clarify what you can control and what you cannot. What is the main decision in front of you?",
+        "When problems feel personal, small steps still help. List two options and one pro/con for each. Which path feels more aligned with your values?"
+      ],
+      "positive": [
+        "It is good to hear things may be improving on the personal front. Keep communicating openly with people who respect you. What changed for the better?"
+      ]
+    },
+    "question": {
+      "negative": [
+        "That is an important question, especially when you are feeling low. Start with one small step rather than the whole answer at once. What part of this feels most unclear?",
+        "You are asking something meaningful. Break the problem into pieces and tackle the first piece only. Which step would make the rest easier?"
+      ],
+      "neutral": [
+        "Good question. First: focus on one clear action you can take today, then build from there. Which part do you want help with most?",
+        "Here is a simple way to approach that: define the goal, list blockers, pick the smallest next step. What is your goal in one sentence?",
+        "Direct answer: start small, stay consistent, and ask for help early if stuck. What specific outcome are you aiming for?"
+      ],
+      "positive": [
+        "Great question — you are thinking proactively. Keep that momentum with one concrete next step. What would you like to try first?"
+      ]
+    },
+    "casual_chat": {
+      "positive": [
+        "Glad to hear that! What is going well for you today?",
+        "That is nice — keep enjoying the small wins. Anything else you want to chat about?"
+      ],
+      "neutral": [
+        "Thanks for sharing. I am here if you want to talk about anything else. What is on your mind next?",
+        "Got it. Feel free to bring up studies, stress, or anything personal whenever you are ready. What would you like to focus on?"
+      ],
+      "negative": [
+        "Thanks for checking in. Even casual chats can be a good moment to pause and breathe. Want to talk about anything that has been bothering you?"
+      ]
+    },
+    "unknown": {
+      "negative": [
+        "I want to help, but I need a little more context. Are you feeling stressed, stuck with studies, or dealing with something personal?",
+        "It sounds like something is bothering you. Can you share whether this is about school, emotions, or a personal situation?"
+      ],
+      "neutral": [
+        "I am not fully sure what you need yet. Are you looking for emotional support, study help, or just someone to listen?",
+        "Could you tell me a bit more — is this about academics, how you are feeling, or something else?",
+        "Help me understand so I can respond better. What is the main thing you want support with right now?"
+      ],
+      "positive": [
+        "I am listening. What topic would you like to explore — studies, motivation, or how you have been feeling?"
+      ]
+    }
+  }
+}

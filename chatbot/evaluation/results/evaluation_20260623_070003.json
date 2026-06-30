@@ -1,0 +1,277 @@
+{
+  "generated_at": "2026-06-23T07:00:03.694025",
+  "emotion_classification": {
+    "accuracy": 0.8571,
+    "macro": {
+      "precision": 0.89,
+      "recall": 0.8571,
+      "f1_score": 0.8542
+    },
+    "weighted": {
+      "precision": 0.89,
+      "recall": 0.8571,
+      "f1_score": 0.8542
+    },
+    "per_class": {
+      "anger": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 10
+      },
+      "disgust": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1_score": 0.8889,
+        "support": 10
+      },
+      "fear": {
+        "precision": 0.6429,
+        "recall": 0.9,
+        "f1_score": 0.75,
+        "support": 10
+      },
+      "joy": {
+        "precision": 1.0,
+        "recall": 0.9,
+        "f1_score": 0.9474,
+        "support": 10
+      },
+      "neutral": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1_score": 0.6667,
+        "support": 10
+      },
+      "sadness": {
+        "precision": 0.8182,
+        "recall": 0.9,
+        "f1_score": 0.8571,
+        "support": 10
+      },
+      "surprise": {
+        "precision": 0.7692,
+        "recall": 1.0,
+        "f1_score": 0.8696,
+        "support": 10
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "anger",
+        "disgust",
+        "fear",
+        "joy",
+        "neutral",
+        "sadness",
+        "surprise"
+      ],
+      "matrix": [
+        [
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          9,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          9,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          5,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10
+        ]
+      ]
+    },
+    "classification_report": "              precision    recall  f1-score   support\n\n       anger       1.00      1.00      1.00        10\n     disgust       1.00      0.80      0.89        10\n        fear       0.64      0.90      0.75        10\n         joy       1.00      0.90      0.95        10\n     neutral       1.00      0.50      0.67        10\n     sadness       0.82      0.90      0.86        10\n    surprise       0.77      1.00      0.87        10\n\n    accuracy                           0.86        70\n   macro avg       0.89      0.86      0.85        70\nweighted avg       0.89      0.86      0.85        70\n",
+    "model": "j-hartmann/emotion-english-distilroberta-base",
+    "test_samples": 70,
+    "task": "Emotion Classification"
+  },
+  "intent_classification": {
+    "accuracy": 0.8714,
+    "macro": {
+      "precision": 0.879,
+      "recall": 0.8714,
+      "f1_score": 0.8698
+    },
+    "weighted": {
+      "precision": 0.879,
+      "recall": 0.8714,
+      "f1_score": 0.8698
+    },
+    "per_class": {
+      "academic_help": {
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1_score": 0.7778,
+        "support": 10
+      },
+      "anxiety": {
+        "precision": 0.7692,
+        "recall": 1.0,
+        "f1_score": 0.8696,
+        "support": 10
+      },
+      "depression": {
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1_score": 0.9,
+        "support": 10
+      },
+      "goodbye": {
+        "precision": 0.9091,
+        "recall": 1.0,
+        "f1_score": 0.9524,
+        "support": 10
+      },
+      "greeting": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1_score": 0.8889,
+        "support": 10
+      },
+      "motivation": {
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1_score": 0.9,
+        "support": 10
+      },
+      "stress": {
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1_score": 0.8,
+        "support": 10
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "academic_help",
+        "anxiety",
+        "depression",
+        "goodbye",
+        "greeting",
+        "motivation",
+        "stress"
+      ],
+      "matrix": [
+        [
+          7,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          9,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          8
+        ]
+      ]
+    },
+    "classification_report": "               precision    recall  f1-score   support\n\nacademic_help       0.88      0.70      0.78        10\n      anxiety       0.77      1.00      0.87        10\n   depression       0.90      0.90      0.90        10\n      goodbye       0.91      1.00      0.95        10\n     greeting       1.00      0.80      0.89        10\n   motivation       0.90      0.90      0.90        10\n       stress       0.80      0.80      0.80        10\n\n     accuracy                           0.87        70\n    macro avg       0.88      0.87      0.87        70\n weighted avg       0.88      0.87      0.87        70\n",
+    "model": "TF-IDF Vectorizer + Logistic Regression",
+    "test_samples": 70,
+    "task": "Intent Classification"
+  }
+}

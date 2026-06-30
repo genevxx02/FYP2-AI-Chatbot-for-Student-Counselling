@@ -1,0 +1,41 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Secrets — never commit
+.env
+.env.local
+**/.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Runtime / generated (recreated on deploy)
+chatbot/instance/
+chatbot/chroma_db/
+chatbot/users.db
+
+# Word lock files (keep .docx reports)
+~$*.docx
+~$*.doc
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Hugging Face / model download cache
+.cache/
+models/
+
+# Regenerated test run outputs (optional — NLP reports in evaluation/results/ are kept)
+chatbot/evaluation/results/functional_tests_*
+chatbot/evaluation/results/pytest_*

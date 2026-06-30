@@ -1,0 +1,42 @@
+# Secrets and local config
+.env
+.env.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Runtime data (recreated on deploy)
+instance/
+chroma_db/
+users.db
+
+# Legacy / unused paths
+rag/tfidf_index.pkl
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Generated test reports (re-run scripts to recreate)
+evaluation/results/functional_tests_*
+evaluation/results/pytest_*
+
+# Hugging Face / torch cache (optional local downloads)
+.cache/
+models/

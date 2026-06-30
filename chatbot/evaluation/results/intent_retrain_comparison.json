@@ -1,0 +1,276 @@
+{
+  "before": {
+    "accuracy": 0.6571,
+    "macro": {
+      "precision": 0.6803,
+      "recall": 0.6571,
+      "f1_score": 0.6591
+    },
+    "weighted": {
+      "precision": 0.6803,
+      "recall": 0.6571,
+      "f1_score": 0.6591
+    },
+    "per_class": {
+      "academic_help": {
+        "precision": 0.4286,
+        "recall": 0.6,
+        "f1_score": 0.5,
+        "support": 10
+      },
+      "anxiety": {
+        "precision": 0.6,
+        "recall": 0.6,
+        "f1_score": 0.6,
+        "support": 10
+      },
+      "depression": {
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1_score": 0.5,
+        "support": 10
+      },
+      "goodbye": {
+        "precision": 0.7692,
+        "recall": 1.0,
+        "f1_score": 0.8696,
+        "support": 10
+      },
+      "greeting": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1_score": 0.8889,
+        "support": 10
+      },
+      "motivation": {
+        "precision": 0.75,
+        "recall": 0.6,
+        "f1_score": 0.6667,
+        "support": 10
+      },
+      "stress": {
+        "precision": 0.7143,
+        "recall": 0.5,
+        "f1_score": 0.5882,
+        "support": 10
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "academic_help",
+        "anxiety",
+        "depression",
+        "goodbye",
+        "greeting",
+        "motivation",
+        "stress"
+      ],
+      "matrix": [
+        [
+          6,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          6,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          5,
+          2,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          1,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          2,
+          1,
+          2,
+          0,
+          0,
+          0,
+          5
+        ]
+      ]
+    },
+    "classification_report": "               precision    recall  f1-score   support\n\nacademic_help       0.43      0.60      0.50        10\n      anxiety       0.60      0.60      0.60        10\n   depression       0.50      0.50      0.50        10\n      goodbye       0.77      1.00      0.87        10\n     greeting       1.00      0.80      0.89        10\n   motivation       0.75      0.60      0.67        10\n       stress       0.71      0.50      0.59        10\n\n     accuracy                           0.66        70\n    macro avg       0.68      0.66      0.66        70\n weighted avg       0.68      0.66      0.66        70\n",
+    "model": "TF-IDF Vectorizer + Logistic Regression",
+    "test_samples": 70,
+    "task": "Intent Classification"
+  },
+  "after": {
+    "accuracy": 0.8714,
+    "macro": {
+      "precision": 0.879,
+      "recall": 0.8714,
+      "f1_score": 0.8698
+    },
+    "weighted": {
+      "precision": 0.879,
+      "recall": 0.8714,
+      "f1_score": 0.8698
+    },
+    "per_class": {
+      "academic_help": {
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1_score": 0.7778,
+        "support": 10
+      },
+      "anxiety": {
+        "precision": 0.7692,
+        "recall": 1.0,
+        "f1_score": 0.8696,
+        "support": 10
+      },
+      "depression": {
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1_score": 0.9,
+        "support": 10
+      },
+      "goodbye": {
+        "precision": 0.9091,
+        "recall": 1.0,
+        "f1_score": 0.9524,
+        "support": 10
+      },
+      "greeting": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1_score": 0.8889,
+        "support": 10
+      },
+      "motivation": {
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1_score": 0.9,
+        "support": 10
+      },
+      "stress": {
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1_score": 0.8,
+        "support": 10
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "academic_help",
+        "anxiety",
+        "depression",
+        "goodbye",
+        "greeting",
+        "motivation",
+        "stress"
+      ],
+      "matrix": [
+        [
+          7,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          9,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          8
+        ]
+      ]
+    },
+    "classification_report": "               precision    recall  f1-score   support\n\nacademic_help       0.88      0.70      0.78        10\n      anxiety       0.77      1.00      0.87        10\n   depression       0.90      0.90      0.90        10\n      goodbye       0.91      1.00      0.95        10\n     greeting       1.00      0.80      0.89        10\n   motivation       0.90      0.90      0.90        10\n       stress       0.80      0.80      0.80        10\n\n     accuracy                           0.87        70\n    macro avg       0.88      0.87      0.87        70\n weighted avg       0.88      0.87      0.87        70\n",
+    "model": "TF-IDF Vectorizer + Logistic Regression",
+    "test_samples": 70,
+    "task": "Intent Classification"
+  }
+}

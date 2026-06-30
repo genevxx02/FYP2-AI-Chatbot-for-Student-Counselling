@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Anonymous Student Support | University AI Counseling</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#4cbfe6",
+                    "secondary": "#8b5cf6",
+                    "success": "#10b981",
+                    "warning": "#f59e0b",
+                    "danger": "#ef4444",
+                    "background-light": "#f6f7f8",
+                    "background-dark": "#111d21",
+                },
+                fontFamily: {
+                    "display": ["Lexend", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                animation: {
+                    'fade-in': 'fadeIn 0.5s ease-in',
+                    'slide-up': 'slideUp 0.3s ease-out',
+                    'pulse-gentle': 'pulseGentle 2s infinite',
+                    'shake': 'shake 0.5s ease-in-out',
+                }
+            },
+        },
+    }
+</script>
+<style>
+    body {
+        font-family: 'Lexend', sans-serif;
+    }
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes pulseGentle {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+    .typing-indicator {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .typing-dot {
+        width: 6px;
+        height: 6px;
+        background-color: #4cbfe6;
+        border-radius: 50%;
+        animation: typing 1.4s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-8px); }
+    }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111617] dark:text-white transition-colors duration-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden font-display">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dce3e5] dark:border-[#2a3a40] px-6 md:px-10 py-4 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 cursor-pointer" id="logoBtn">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#111617] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">University Counseling</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-6 items-center">
+<a class="text-sm font-medium text-[#647e87] dark:text-gray-400 hover:text-primary transition-colors cursor-pointer" id="crisisBtn">Crisis Resources</a>
+<button id="themeToggle" class="p-2 rounded-full hover:bg-primary/10 transition-colors" title="Toggle Dark/Light Mode">
+<span class="material-symbols-outlined text-primary">dark_mode</span>
+</button>
+<button id="adminLoginBtn" class="px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-sm font-medium transition-colors">
+<span class="material-symbols-outlined align-middle mr-1 text-sm">admin_panel_settings</span>
+<span class="hidden md:inline">Admin</span>
+</button>
+</div>
+</header>
+
+<!-- Main Content -->
+<main id="mainContent" class="flex flex-1 flex-col items-center justify-center py-8 md:py-12 px-4 @container">
+<!-- Landing Page -->
+<div id="landingPage" class="max-w-[800px] w-full flex flex-col items-center text-center gap-8 md:gap-12 animate-fade-in">
+<!-- Chatbot Avatar -->
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-pulse-gentle"></div>
+<div class="relative z-10 size-40 md:size-64 bg-white dark:bg-[#1a2b32] rounded-full shadow-2xl flex items-center justify-center border-4 border-primary/30 cursor-pointer hover:scale-105 transition-transform duration-300" id="avatarBtn">
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-primary !text-6xl md:!text-9xl">smart_toy</span>
+<div class="typing-indicator">
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Headline & Subtext -->
+<div class="flex flex-col gap-4">
+<h1 class="text-[#111617] dark:text-white text-3xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
+Anonymous Student Support
+</h1>
+<div class="flex flex-col gap-2 max-w-[600px] mx-auto">
+<p class="text-base md:text-lg text-[#647e87] dark:text-gray-300 font-medium">
+A safe space to talk about your mental well-being, anytime.
+</p>
+<div class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold mt-2 cursor-pointer hover:bg-primary/20 transition-colors" id="privacyBadge">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span>You're speaking with an AI assistant. Conversations are private.</span>
+</div>
+</div>
+</div>
+
+<!-- CTA Button -->
+<button id="startChatBtn" class="group flex min-w-[280px] cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-full h-14 md:h-16 px-8 md:px-10 bg-primary text-white text-lg md:text-xl font-bold transition-all hover:bg-[#3ba8cc] hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 animate-slide-up">
+<span class="truncate">Start Talking Anonymously</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+
+<!-- Feature Highlights -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-8 md:mt-12">
+<div class="feature-card flex flex-col items-center gap-2 p-4 bg-white/50 dark:bg-[#1a2b32]/50 rounded-2xl backdrop-blur-sm hover:bg-white dark:hover:bg-[#1a2b32] transition-colors cursor-pointer" data-info="private">
+<div class="bg-primary/10 p-3 rounded-full text-primary">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<h3 class="font-bold">Fully Private</h3>
+<p class="text-sm text-[#647e87] dark:text-gray-400">No login required to start a chat.</p>
+</div>
+<div class="feature-card flex flex-col items-center gap-2 p-4 bg-white/50 dark:bg-[#1a2b32]/50 rounded-2xl backdrop-blur-sm hover:bg-white dark:hover:bg-[#1a2b32] transition-colors cursor-pointer" data-info="support">
+<div class="bg-primary/10 p-3 rounded-full text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<h3 class="font-bold">24/7 Support</h3>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Available day and night, instantly.</p>
+</div>
+<div class="feature-card flex flex-col items-center gap-2 p-4 bg-white/50 dark:bg-[#1a2b32]/50 rounded-2xl backdrop-blur-sm hover:bg-white dark:hover:bg-[#1a2b32] transition-colors cursor-pointer" data-info="care">
+<div class="bg-primary/10 p-3 rounded-full text-primary">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<h3 class="font-bold">Supervised Care</h3>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Oversight for your absolute safety.</p>
+</div>
+</div>
+
+<!-- Stats Counter -->
+<div class="flex items-center justify-center gap-6 mt-8 text-sm text-[#647e87] dark:text-gray-400">
+<div class="text-center">
+<div class="text-2xl font-bold text-primary" id="usersHelped">1,247</div>
+<div class="text-xs">Students Helped Today</div>
+</div>
+<div class="h-8 w-px bg-[#dce3e5] dark:bg-[#2a3a40]"></div>
+<div class="text-center">
+<div class="text-2xl font-bold text-primary" id="avgResponseTime">2.4</div>
+<div class="text-xs">Avg. Response Time (s)</div>
+</div>
+</div>
+</div>
+
+<!-- Chat Interface (Hidden by default) -->
+<div id="chatInterface" class="hidden max-w-4xl w-full h-[500px] md:h-[600px] flex flex-col animate-fade-in">
+<div class="bg-white dark:bg-[#1a2b32] rounded-2xl shadow-2xl flex flex-col h-full overflow-hidden">
+<!-- Chat Header -->
+<div class="flex items-center justify-between p-4 md:p-6 border-b border-[#dce3e5] dark:border-[#2a3a40]">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-full animate-pulse-gentle">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+</div>
+<div>
+<h3 class="font-bold text-base md:text-lg">AI Counselor</h3>
+<p class="text-xs md:text-sm text-[#647e87] dark:text-gray-400">Online • Ready to listen</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button id="endChat" class="p-2 text-[#647e87] dark:text-gray-400 hover:text-danger transition-colors" title="End Chat">
+<span class="material-symbols-outlined">logout</span>
+</button>
+<button id="minimizeChat" class="p-2 text-[#647e87] dark:text-gray-400 hover:text-primary transition-colors" title="Minimize">
+<span class="material-symbols-outlined">minimize</span>
+</button>
+<button id="backToHome" class="flex items-center gap-2 text-primary hover:text-[#3ba8cc] transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="hidden md:inline">Back</span>
+</button>
+</div>
+</div>
+
+<!-- Chat Messages Container -->
+<div id="chatMessages" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
+<!-- Welcome message -->
+<div class="chat-message flex">
+<div class="flex-1">
+<div class="bg-primary/10 dark:bg-primary/20 rounded-2xl rounded-tl-none p-4 max-w-[90%] md:max-w-[80%] inline-block animate-fade-in">
+<p class="text-[#111617] dark:text-white">Hello! I'm your AI counselor. I'm here to listen and provide support. Everything you share is confidential. How are you feeling today?</p>
+<p class="text-xs text-[#647e87] dark:text-gray-400 mt-2">Just now</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Typing Indicator (Hidden by default) -->
+<div id="typingIndicator" class="hidden p-4">
+<div class="flex items-center gap-2">
+<div class="bg-primary/10 dark:bg-primary/20 rounded-2xl rounded-tl-none p-4">
+<div class="typing-indicator">
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Chat Input Area -->
+<div class="p-4 md:p-6 border-t border-[#dce3e5] dark:border-[#2a3a40]">
+<div class="flex gap-2 md:gap-3">
+<button id="voiceInput" class="p-3 md:p-4 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-colors" title="Voice Input">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<input id="messageInput" type="text" placeholder="Type your message here..." class="flex-1 bg-background-light dark:bg-[#2a3a40] rounded-full px-4 md:px-6 py-3 md:py-4 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" autocomplete="off"/>
+<button id="sendMessage" class="bg-primary text-white rounded-full p-3 md:p-4 hover:bg-[#3ba8cc] transition-colors" title="Send message">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="quick-response-btn px-3 py-1.5 md:px-4 md:py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-xs md:text-sm transition-colors" data-msg="I'm feeling stressed about exams">😰 Stressed about exams</button>
+<button class="quick-response-btn px-3 py-1.5 md:px-4 md:py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-xs md:text-sm transition-colors" data-msg="I've been feeling lonely">😔 Feeling lonely</button>
+<button class="quick-response-btn px-3 py-1.5 md:px-4 md:py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-xs md:text-sm transition-colors" data-msg="I need someone to talk to">💬 Need to talk</button>
+<button class="quick-response-btn px-3 py-1.5 md:px-4 md:py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-xs md:text-sm transition-colors" data-msg="I'm having trouble sleeping">😴 Trouble sleeping</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Admin Auth Interface (Hidden by default) -->
+<div id="adminAuthInterface" class="hidden max-w-md w-full animate-fade-in">
+<div class="bg-white dark:bg-[#1a2b32] rounded-2xl shadow-2xl p-6 md:p-8">
+<!-- Admin Login Form -->
+<div id="adminLoginForm" class="space-y-6">
+<div class="text-center">
+<div class="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">admin_panel_settings</span>
+</div>
+<h2 class="text-2xl font-bold text-[#111617] dark:text-white">Admin Portal</h2>
+<p class="text-[#647e87] dark:text-gray-400 mt-2">University staff login</p>
+</div>
+
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">Email Address</label>
+<input type="email" id="adminEmail" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="university.edu" required>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">Password</label>
+<input type="password" id="adminPassword" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="••••••••" required>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 text-sm text-[#647e87] dark:text-gray-400">
+<input type="checkbox" id="rememberMe" class="rounded border-[#dce3e5] dark:border-[#2a3a40]">
+<span>Remember me</span>
+</label>
+<a href="#" class="text-sm text-primary hover:underline" id="forgotPasswordBtn">Forgot password?</a>
+</div>
+</div>
+
+<div class="space-y-3">
+<button id="adminLoginSubmit" class="w-full bg-primary text-white rounded-full py-3 font-medium hover:bg-[#3ba8cc] transition-colors">
+<span class="material-symbols-outlined align-middle mr-2">login</span>
+Login to Admin Portal
+</button>
+<button id="adminRegisterToggle" class="w-full bg-primary/10 text-primary rounded-full py-3 font-medium hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined align-middle mr-2">person_add</span>
+Register New Admin
+</button>
+</div>
+
+<div class="text-center pt-4 border-t border-[#dce3e5] dark:border-[#2a3a40]">
+<button id="backToMainFromLogin" class="text-sm text-[#647e87] dark:text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined align-middle mr-1">arrow_back</span>
+Back to main page
+</button>
+</div>
+</div>
+
+<!-- Admin Register Form (Hidden by default) -->
+<div id="adminRegisterForm" class="hidden space-y-6">
+<div class="text-center">
+<div class="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">person_add</span>
+</div>
+<h2 class="text-2xl font-bold text-[#111617] dark:text-white">Admin Registration</h2>
+<p class="text-[#647e87] dark:text-gray-400 mt-2">Register new university admin account</p>
+</div>
+
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">First Name</label>
+<input type="text" id="firstName" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="John" required>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">Last Name</label>
+<input type="text" id="lastName" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Doe" required>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">University Email</label>
+<input type="email" id="regEmail" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="john.doe@university.edu" required>
+<small class="text-xs text-[#647e87] dark:text-gray-400 mt-1">Must be a valid university email address</small>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">University ID</label>
+<input type="text" id="universityId" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="EMP12345" required>
+<small class="text-xs text-[#647e87] dark:text-gray-400 mt-1">Your employee/student ID number</small>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">Department</label>
+<select id="department" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary appearance-none">
+<option value="">Select Department</option>
+<option value="counseling">Counseling Services</option>
+<option value="health">Student Health Services</option>
+<option value="academic">Academic Affairs</option>
+<option value="reslife">Residential Life</option>
+<option value="faculty">Faculty/Staff</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">Create Password</label>
+<input type="password" id="regPassword" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="••••••••" required>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<div class="text-xs">
+<div class="flex items-center gap-1" id="lengthCheck">
+<span class="material-symbols-outlined text-xs text-red-500">close</span>
+<span>8+ characters</span>
+</div>
+<div class="flex items-center gap-1" id="numberCheck">
+<span class="material-symbols-outlined text-xs text-red-500">close</span>
+<span>1 number</span>
+</div>
+</div>
+<div class="text-xs">
+<div class="flex items-center gap-1" id="uppercaseCheck">
+<span class="material-symbols-outlined text-xs text-red-500">close</span>
+<span>Uppercase</span>
+</div>
+<div class="flex items-center gap-1" id="specialCheck">
+<span class="material-symbols-outlined text-xs text-red-500">close</span>
+<span>Special char</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#111617] dark:text-white mb-2">Confirm Password</label>
+<input type="password" id="confirmPassword" class="w-full bg-background-light dark:bg-[#2a3a40] rounded-full px-4 py-3 text-[#111617] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="••••••••" required>
+<div id="passwordMatch" class="hidden text-xs text-red-500 mt-1">
+<span class="material-symbols-outlined align-middle text-xs">error</span>
+<span>Passwords do not match</span>
+</div>
+</div>
+<div>
+<label class="flex items-start gap-2 text-sm text-[#647e87] dark:text-gray-400">
+<input type="checkbox" id="termsAgreement" class="rounded border-[#dce3e5] dark:border-[#2a3a40] mt-1">
+<span>I agree to the <a href="#" class="text-primary hover:underline" id="termsLink">Terms of Service</a> and confirm that I am authorized university staff</span>
+</label>
+</div>
+</div>
+
+<div class="space-y-3">
+<button id="adminRegisterSubmit" class="w-full bg-primary text-white rounded-full py-3 font-medium hover:bg-[#3ba8cc] transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+<span class="material-symbols-outlined align-middle mr-2">how_to_reg</span>
+Register Account
+</button>
+<button id="backToLogin" class="w-full bg-primary/10 text-primary rounded-full py-3 font-medium hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined align-middle mr-2">arrow_back</span>
+Back to Login
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Admin Dashboard (Hidden by default) -->
+<div id="adminDashboard" class="hidden max-w-6xl w-full animate-fade-in">
+<div class="bg-white dark:bg-[#1a2b32] rounded-2xl shadow-2xl overflow-hidden">
+<!-- Dashboard Header -->
+<div class="flex items-center justify-between p-6 border-b border-[#dce3e5] dark:border-[#2a3a40]">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Admin Dashboard</h3>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Welcome, <span id="adminName">Admin</span></p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button id="refreshDashboard" class="p-2 text-[#647e87] dark:text-gray-400 hover:text-primary transition-colors" title="Refresh">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button id="adminLogout" class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined align-middle mr-1">logout</span>
+Logout
+</button>
+</div>
+</div>
+
+<!-- Dashboard Content -->
+<div class="p-6">
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="bg-primary/5 rounded-xl p-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Total Chats</p>
+<p class="text-2xl font-bold text-primary" id="totalConversations">0</p>
+</div>
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">chat</span>
+</div>
+</div>
+<p class="text-xs text-[#647e87] dark:text-gray-400 mt-2">All logged messages</p>
+</div>
+<div class="bg-primary/5 rounded-xl p-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Total Crisis Cases</p>
+<p class="text-2xl font-bold text-amber-600" id="crisisInterventions">0</p>
+</div>
+<div class="bg-amber-500/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-amber-600">emergency</span>
+</div>
+</div>
+<p class="text-xs text-[#647e87] dark:text-gray-400 mt-2">Crisis keyword detections</p>
+</div>
+<div class="bg-primary/5 rounded-xl p-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Most Common Emotion</p>
+<p class="text-2xl font-bold text-primary capitalize" id="mostCommonEmotion">—</p>
+</div>
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">mood</span>
+</div>
+</div>
+<p class="text-xs text-[#647e87] dark:text-gray-400 mt-2" id="mostCommonEmotionCount">No data yet</p>
+</div>
+<div class="bg-primary/5 rounded-xl p-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm text-[#647e87] dark:text-gray-400">Most Common Intent</p>
+<p class="text-2xl font-bold text-indigo-600 capitalize" id="mostCommonIntent">—</p>
+</div>
+<div class="bg-indigo-500/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-indigo-600">psychology</span>
+</div>
+</div>
+<p class="text-xs text-[#647e87] dark:text-gray-400 mt-2" id="mostCommonIntentCount">No data yet</p>
+</div>
+</div>
+
+<!-- Distribution Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+<div class="bg-background-light dark:bg-[#2a3a40] rounded-xl p-4">
+<h4 class="font-bold mb-4">Emotion Distribution</h4>
+<canvas id="dashboardEmotionChart" height="220"></canvas>
+</div>
+<div class="bg-background-light dark:bg-[#2a3a40] rounded-xl p-4">
+<h4 class="font-bold mb-4">Intent Distribution</h4>
+<canvas id="dashboardIntentChart" height="220"></canvas>
+</div>
+</div>
+
+<!-- Recent Activity & Quick Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Recent Conversations -->
+<div class="lg:col-span-2">
+<div class="bg-background-light dark:bg-[#2a3a40] rounded-xl p-4">
+<h4 class="font-bold mb-4">Recent Conversations</h4>
+<div id="recentConversations" class="space-y-3 max-h-64 overflow-y-auto">
+<p class="text-sm text-[#647e87] dark:text-gray-400">No conversations yet.</p>
+</div>
+</div>
+</div>
+
+<!-- Quick Actions -->
+<div class="lg:col-span-1">
+<div class="bg-background-light dark:bg-[#2a3a40] rounded-xl p-4">
+<h4 class="font-bold mb-4">Quick Actions</h4>
+<div class="space-y-3">
+<button id="viewAnalytics" class="w-full flex items-center gap-3 p-3 bg-white dark:bg-[#1a2b32] rounded-lg hover:bg-primary/5 transition-colors">
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="text-left">
+<p class="font-medium">View Analytics</p>
+<p class="text-xs text-[#647e87] dark:text-gray-400">Detailed usage reports</p>
+</div>
+</button>
+<button id="manageResources" class="w-full flex items-center gap-3 p-3 bg-white dark:bg-[#1a2b32] rounded-lg hover:bg-primary/5 transition-colors">
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">library_books</span>
+</div>
+<div class="text-left">
+<p class="font-medium">Manage Resources</p>
+<p class="text-xs text-[#647e87] dark:text-gray-400">Update crisis resources</p>
+</div>
+</button>
+<button id="userManagement" class="w-full flex items-center gap-3 p-3 bg-white dark:bg-[#1a2b32] rounded-lg hover:bg-primary/5 transition-colors">
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">manage_accounts</span>
+</div>
+<div class="text-left">
+<p class="font-medium">User Management</p>
+<p class="text-xs text-[#647e87] dark:text-gray-400">Admin user controls</p>
+</div>
+</button>
+<button id="systemSettings" class="w-full flex items-center gap-3 p-3 bg-white dark:bg-[#1a2b32] rounded-lg hover:bg-primary/5 transition-colors">
+<div class="bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">settings</span>
+</div>
+<div class="text-left">
+<p class="font-medium">System Settings</p>
+<p class="text-xs text-[#647e87] dark:text-gray-400">Configure AI responses</p>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<!-- Footer Section -->
+<footer class="flex flex-col gap-6 md:gap-8 px-6 md:px-10 py-8 md:py-12 border-t border-[#dce3e5] dark:border-[#2a3a40]">
+<div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 lg:gap-16">
+<a class="footer-link text-[#647e87] dark:text-gray-400 text-xs md:text-sm font-medium hover:text-primary transition-colors cursor-pointer" data-modal="privacy">Privacy Policy</a>
+<a class="footer-link text-[#647e87] dark:text-gray-400 text-xs md:text-sm font-medium hover:text-primary transition-colors cursor-pointer" data-modal="terms">Terms of Service</a>
+<a class="footer-link text-primary text-xs md:text-sm font-bold hover:underline underline-offset-4 cursor-pointer" data-modal="crisis">Crisis Hotlines (999)</a>
+<a class="footer-link text-[#647e87] dark:text-gray-400 text-xs md:text-sm font-medium hover:text-primary transition-colors cursor-pointer" data-modal="how">How it Works</a>
+<a class="footer-link text-[#647e87] dark:text-gray-400 text-xs md:text-sm font-medium hover:text-primary transition-colors cursor-pointer" data-modal="admin">Admin Portal</a>
+</div>
+<div class="text-center">
+<p class="text-[#647e87] dark:text-gray-500 text-xs">
+© 2026 University Support AI Counseling. All conversations are handled via secure, anonymous encryption.
+</p>
+</div>
+</footer>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[100] hidden">
+<div id="modalPanel" class="bg-white dark:bg-[#1a2b32] rounded-2xl max-w-md w-full max-h-[80vh] overflow-hidden transition-all">
+<div class="flex items-center justify-between p-6 border-b border-[#dce3e5] dark:border-[#2a3a40]">
+<h3 class="text-lg font-bold" id="modalTitle">Modal Title</h3>
+<button id="closeModal" class="text-[#647e87] dark:text-gray-400 hover:text-primary">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 overflow-y-auto" id="modalContent">
+<!-- Modal content will be inserted here -->
+</div>
+</div>
+</div>
+
+<script>
+    // Initialize Application
+    document.addEventListener('DOMContentLoaded', function() {
+        const app = new CounselingApp();
+        app.init();
+    });
+
+    class CounselingApp {
+        constructor() {
+            // DOM Elements
+            this.elements = {
+                // Main navigation
+                startChatBtn: document.getElementById('startChatBtn'),
+                backToHome: document.getElementById('backToHome'),
+                landingPage: document.getElementById('landingPage'),
+                chatInterface: document.getElementById('chatInterface'),
+                logoBtn: document.getElementById('logoBtn'),
+                avatarBtn: document.getElementById('avatarBtn'),
+                minimizeChat: document.getElementById('minimizeChat'),
+                endChat: document.getElementById('endChat'),
+                // Admin elements
+                adminLoginBtn: document.getElementById('adminLoginBtn'),
+                adminAuthInterface: document.getElementById('adminAuthInterface'),
+                adminDashboard: document.getElementById('adminDashboard'),
+                adminLoginForm: document.getElementById('adminLoginForm'),
+                adminRegisterForm: document.getElementById('adminRegisterForm'),
+                adminEmail: document.getElementById('adminEmail'),
+                adminPassword: document.getElementById('adminPassword'),
+                adminLoginSubmit: document.getElementById('adminLoginSubmit'),
+                adminRegisterToggle: document.getElementById('adminRegisterToggle'),
+                backToMainFromLogin: document.getElementById('backToMainFromLogin'),
+                backToLogin: document.getElementById('backToLogin'),
+                adminRegisterSubmit: document.getElementById('adminRegisterSubmit'),
+                adminLogout: document.getElementById('adminLogout'),
+                adminName: document.getElementById('adminName'),
+                refreshDashboard: document.getElementById('refreshDashboard'),
+                
+                // Registration form elements
+                firstName: document.getElementById('firstName'),
+                lastName: document.getElementById('lastName'),
+                regEmail: document.getElementById('regEmail'),
+                universityId: document.getElementById('universityId'),
+                department: document.getElementById('department'),
+                regPassword: document.getElementById('regPassword'),
+                confirmPassword: document.getElementById('confirmPassword'),
+                termsAgreement: document.getElementById('termsAgreement'),
+                
+                // Chat elements
+                messageInput: document.getElementById('messageInput'),
+                sendMessageBtn: document.getElementById('sendMessage'),
+                chatMessages: document.getElementById('chatMessages'),
+                typingIndicator: document.getElementById('typingIndicator'),
+                
+                // Theme and modals
+                themeToggle: document.getElementById('themeToggle'),
+                modal: document.getElementById('modal'),
+                modalPanel: document.getElementById('modalPanel'),
+                modalTitle: document.getElementById('modalTitle'),
+                modalContent: document.getElementById('modalContent'),
+                closeModal: document.getElementById('closeModal'),
+                
+                // Other elements
+                crisisBtn: document.getElementById('crisisBtn'),
+                privacyBadge: document.getElementById('privacyBadge'),
+                voiceInput: document.getElementById('voiceInput'),
+                usersHelped: document.getElementById('usersHelped'),
+                avgResponseTime: document.getElementById('avgResponseTime'),
+                forgotPasswordBtn: document.getElementById('forgotPasswordBtn'),
+                termsLink: document.getElementById('termsLink'),
+                
+                // Dashboard elements
+                totalConversations: document.getElementById('totalConversations'),
+                crisisInterventions: document.getElementById('crisisInterventions'),
+                mostCommonEmotion: document.getElementById('mostCommonEmotion'),
+                mostCommonEmotionCount: document.getElementById('mostCommonEmotionCount'),
+                mostCommonIntent: document.getElementById('mostCommonIntent'),
+                mostCommonIntentCount: document.getElementById('mostCommonIntentCount'),
+                recentConversations: document.getElementById('recentConversations'),
+                viewAnalytics: document.getElementById('viewAnalytics'),
+                manageResources: document.getElementById('manageResources'),
+                userManagement: document.getElementById('userManagement'),
+                systemSettings: document.getElementById('systemSettings')
+            };
+
+            // State
+            this.state = {
+                chatHistory: [],
+                isTyping: false,
+                conversationCount: 0,
+                userPreferences: {
+                    theme: localStorage.getItem('theme') || 'light',
+                    notifications: true
+                },
+                currentAdmin: null,
+                analyticsCharts: [],
+                dashboardCharts: [],
+                modalContents: {
+                    privacy: {
+                        title: 'Privacy Policy',
+                        content: `
+                            <div class="space-y-4">
+                                <p class="text-sm text-[#647e87] dark:text-gray-400">
+                                    Your privacy is our top priority. Here's how we protect your data:
+                                </p>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                        <span>All conversations are completely anonymous</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                        <span>No personal information is stored or shared</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                        <span>End-to-end encryption for all messages</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                        <span>Automatic deletion of chat history after 24 hours</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                        <span>No connection to your university records</span>
+                                    </li>
+                                </ul>
+                                <p class="text-xs text-[#647e87] dark:text-gray-500">
+                                    For emergency situations where there is immediate risk of harm, we may need to contact appropriate authorities while maintaining as much privacy as possible.
+                                </p>
+                            </div>
+                        `
+                    },
+                    terms: {
+                        title: 'Terms of Service',
+                        content: `
+                            <div class="space-y-4">
+                                <p class="text-sm text-[#647e87] dark:text-gray-400">
+                                    By using this service, you agree to the following terms:
+                                </p>
+                                <ol class="space-y-3 text-sm list-decimal pl-4">
+                                    <li>This service provides AI-powered support and is not a substitute for professional medical care</li>
+                                    <li>Users must be 18 years or older, or have parental consent</li>
+                                    <li>Do not use this service for emergency medical situations</li>
+                                    <li>Be respectful and constructive in your communications</li>
+                                    <li>We reserve the right to terminate access for misuse</li>
+                                </ol>
+                                <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
+                                    <p class="text-sm text-yellow-800 dark:text-yellow-200">
+                                        <strong>Important:</strong> If you're experiencing a mental health emergency, please call 999 or Talian Kasih 15999 immediately.
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                    },
+                    how: {
+                        title: 'How It Works',
+                        content: `
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-primary/10 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-primary">chat</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Start a Conversation</h4>
+                                        <p class="text-sm text-[#647e87] dark:text-gray-400">Click "Start Talking Anonymously" to begin your private chat session.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-primary/10 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-primary">psychology</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">AI-Powered Support</h4>
+                                        <p class="text-sm text-[#647e87] dark:text-gray-400">Our AI counselor listens and provides evidence-based support strategies.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-primary/10 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-primary">shield</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Human Oversight</h4>
+                                        <p class="text-sm text-[#647e87] dark:text-gray-400">Trained counselors monitor conversations to ensure safety and quality.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-primary/10 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-primary">exit_to_app</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Next Steps</h4>
+                                        <p class="text-sm text-[#647e87] dark:text-gray-400">Get recommendations for campus resources and professional support options.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-primary/5 p-4 rounded-lg">
+                                    <p class="text-sm">
+                                        <strong>Remember:</strong> This service complements, but does not replace, professional mental health care.
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                    },
+                    admin: {
+                        title: 'Admin Portal',
+                        content: `
+                            <div class="space-y-4">
+                                <p class="text-sm text-[#647e87] dark:text-gray-400">
+                                    University administrators and counselors can access additional resources:
+                                </p>
+                                
+                                <div class="space-y-3">
+                                    <div class="p-3 bg-primary/5 rounded-lg">
+                                        <p class="font-semibold">📊 Analytics Dashboard</p>
+                                        <p class="text-xs text-[#647e87] dark:text-gray-400">Monitor usage patterns and identify trends</p>
+                                    </div>
+                                    
+                                    <div class="p-3 bg-primary/5 rounded-lg">
+                                        <p class="font-semibold">👥 Student Outreach</p>
+                                        <p class="text-xs text-[#647e87] dark:text-gray-400">Coordinate follow-up support when needed</p>
+                                    </div>
+                                    
+                                    <div class="p-3 bg-primary/5 rounded-lg">
+                                        <p class="font-semibold">🔧 System Management</p>
+                                        <p class="text-xs text-[#647e87] dark:text-gray-400">Update resources and manage AI responses</p>
+                                    </div>
+                                    
+                                    <div class="p-3 bg-primary/5 rounded-lg">
+                                        <p class="font-semibold">📚 Training Resources</p>
+                                        <p class="text-xs text-[#647e87] dark:text-gray-400">Access counselor training materials</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button class="px-6 py-2 bg-primary text-white rounded-full hover:bg-[#3ba8cc] transition-colors" id="modalAdminLoginBtn">
+                                        Login to Admin Portal
+                                    </button>
+                                    <p class="text-xs text-[#647e87] dark:text-gray-400 mt-2">
+                                        Requires university credentials
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                    }
+                }
+            };
+        }
+
+        init() {
+            this.setupEventListeners();
+            this.loadUserPreferences();
+            this.updateStats();
+            this.startStatsAnimation();
+            this.setupAdminFormValidation();
+            this.checkLlmStatus();
+            if (window.location.pathname === '/admin') {
+                this.openAdminRoute();
+            } else {
+                this.checkAdminSession();
+            }
+        }
+
+        openAdminRoute() {
+            fetch('/api/session')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        this.state.currentAdmin = { email: data.email };
+                        this.elements.adminName.textContent = data.email;
+                        this.showAdminDashboard();
+                    } else {
+                        this.showAdminLogin();
+                    }
+                })
+                .catch(() => this.showAdminLogin());
+        }
+
+        checkLlmStatus() {
+            fetch('/api/llm-status')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.active) return;
+                    const note = document.createElement('p');
+                    note.className = 'text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg px-3 py-2 mb-3';
+                    note.textContent = 'AI chat mode is off — add GROQ_API_KEY to .env and restart the server. Using template responses for now.';
+                    const chatMessages = this.elements.chatMessages;
+                    if (chatMessages && chatMessages.firstElementChild) {
+                        chatMessages.insertBefore(note, chatMessages.firstElementChild.nextSibling);
+                    }
+                })
+                .catch(() => {});
+        }
+
+        setupEventListeners() {
+            // Main Navigation
+            this.elements.startChatBtn.addEventListener('click', () => this.showChatInterface());
+            this.elements.backToHome.addEventListener('click', () => this.showLandingPage());
+            this.elements.logoBtn.addEventListener('click', () => this.showLandingPage());
+            this.elements.avatarBtn.addEventListener('click', () => this.showChatInterface());
+            this.elements.minimizeChat.addEventListener('click', () => this.minimizeChat());
+            this.elements.endChat.addEventListener('click', () => this.endChat());
+
+            // Chat Functionality
+            this.elements.sendMessageBtn.addEventListener('click', () => this.sendMessage());
+            this.elements.messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.sendMessage();
+            });
+
+            // Quick Response Buttons
+            document.querySelectorAll('.quick-response-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const message = e.currentTarget.getAttribute('data-msg');
+                    this.addMessageToChat(message, 'user');
+                    this.fetchBotResponse(message);
+                });
+            });
+
+            // Feature Cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const info = e.currentTarget.getAttribute('data-info');
+                    this.showFeatureInfo(info);
+                });
+            });
+
+            // Theme Toggle
+            this.elements.themeToggle.addEventListener('click', () => this.toggleTheme());
+
+            // Modal Functions
+            this.elements.closeModal.addEventListener('click', () => this.closeModal());
+            this.elements.modal.addEventListener('click', (e) => {
+                if (e.target === this.elements.modal) this.closeModal();
+            });
+
+            // Footer Links
+            document.querySelectorAll('.footer-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const modalType = e.target.getAttribute('data-modal');
+                    if (modalType === 'crisis') {
+                        this.openCrisisModal();
+                    } else {
+                        this.openModal(modalType);
+                    }
+                });
+            });
+
+            // Voice Input
+            this.elements.voiceInput?.addEventListener('click', () => this.toggleVoiceInput());
+
+            // Privacy Badge
+            this.elements.privacyBadge?.addEventListener('click', () => this.openModal('privacy'));
+
+            // Crisis Button
+            this.elements.crisisBtn?.addEventListener('click', () => this.openCrisisModal());
+
+            // Admin Navigation
+            this.elements.adminLoginBtn.addEventListener('click', () => this.showAdminLogin());
+            this.elements.backToMainFromLogin.addEventListener('click', () => this.showLandingPage());
+            this.elements.adminRegisterToggle.addEventListener('click', () => this.showAdminRegister());
+            this.elements.backToLogin.addEventListener('click', () => this.showAdminLogin());
+
+            // Admin Login/Register
+            this.elements.adminLoginSubmit.addEventListener('click', () => this.adminLogin());
+            this.elements.adminRegisterSubmit.addEventListener('click', () => this.adminRegister());
+            this.elements.adminLogout.addEventListener('click', () => this.adminLogout());
+
+            // Dashboard Actions
+            this.elements.refreshDashboard.addEventListener('click', () => this.refreshDashboard());
+            this.elements.viewAnalytics.addEventListener('click', () => this.openAnalyticsPanel());
+            this.elements.manageResources.addEventListener('click', () => this.openResourceManager());
+            this.elements.userManagement.addEventListener('click', () => this.openUserManagement());
+            this.elements.systemSettings.addEventListener('click', () => this.openSystemSettings());
+
+            // Forgot Password
+            this.elements.forgotPasswordBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showNotification(
+                    'Log in and go to System Settings to change your password under "Change Your Password".',
+                    'info'
+                );
+            });
+
+            // Terms Link
+            this.elements.termsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openModal('terms');
+            });
+
+            // Modal admin login button
+            document.addEventListener('click', (e) => {
+                if (e.target.id === 'modalAdminLoginBtn') {
+                    this.closeModal();
+                    this.showAdminLogin();
+                }
+            });
+
+            // Copy buttons in modal
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('copy-btn')) {
+                    const text = e.target.getAttribute('data-text');
+                    this.copyToClipboard(text);
+                    this.showNotification('Copied to clipboard!', 'success');
+                }
+            });
+
+            // Password validation
+            if (this.elements.regPassword) {
+                this.elements.regPassword.addEventListener('input', () => this.validatePassword());
+                this.elements.confirmPassword.addEventListener('input', () => this.validatePasswordMatch());
+                this.elements.termsAgreement.addEventListener('change', () => this.validateRegistrationForm());
+            }
+        }
+
+        showAdminLogin() {
+            this.hideAllInterfaces();
+            this.elements.adminAuthInterface.classList.remove('hidden');
+            this.elements.adminLoginForm.classList.remove('hidden');
+            this.elements.adminRegisterForm.classList.add('hidden');
+            this.elements.adminEmail.focus();
+        }
+
+        showAdminRegister() {
+            this.hideAllInterfaces();
+            this.elements.adminAuthInterface.classList.remove('hidden');
+            this.elements.adminLoginForm.classList.add('hidden');
+            this.elements.adminRegisterForm.classList.remove('hidden');
+            this.elements.firstName.focus();
+        }
+
+        showAdminDashboard() {
+            this.hideAllInterfaces();
+            this.elements.adminDashboard.classList.remove('hidden');
+            this.updateDashboardStats();
+        }
+
+        hideAllInterfaces() {
+            this.elements.landingPage.classList.add('hidden');
+            this.elements.chatInterface.classList.add('hidden');
+            this.elements.adminAuthInterface.classList.add('hidden');
+            this.elements.adminDashboard.classList.add('hidden');
+        }
+
+        showChatInterface() {
+            this.hideAllInterfaces();
+            this.elements.chatInterface.classList.remove('hidden');
+            this.elements.messageInput.focus();
+            this.conversationCount++;
+            this.updateStats();
+        }
+
+        showLandingPage() {
+            this.hideAllInterfaces();
+            this.elements.landingPage.classList.remove('hidden');
+        }
+
+        minimizeChat() {
+            this.showLandingPage();
+            this.showNotification('Chat minimized. Click the avatar to return.', 'info');
+        }
+
+        adminLogin() {
+            const email = this.elements.adminEmail.value.trim();
+            const password = this.elements.adminPassword.value.trim();
+
+            if (!email || !password) {
+                this.showNotification('Please fill in all fields', 'warning');
+                return;
+            }
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            })
+            .then(res => res.json().then(data => ({ ok: res.ok, data })))
+            .then(({ ok, data }) => {
+                if (ok) {
+                    this.state.currentAdmin = { email: data.email };
+                    this.showAdminDashboard();
+                    this.elements.adminName.textContent = data.email;
+                    this.showNotification('Welcome back!', 'success');
+                } else {
+                    this.showNotification(data.error || 'Invalid email or password', 'danger');
+                    this.elements.adminPassword.classList.add('animate-shake');
+                    setTimeout(() => {
+                        this.elements.adminPassword.classList.remove('animate-shake');
+                    }, 500);
+                }
+            })
+            .catch(() => this.showNotification('Login failed. Please try again.', 'danger'));
+        }
+
+        adminRegister() {
+            const userData = {
+                firstName: this.elements.firstName.value.trim(),
+                lastName: this.elements.lastName.value.trim(),
+                email: this.elements.regEmail.value.trim(),
+                universityId: this.elements.universityId.value.trim(),
+                department: this.elements.department.value,
+                password: this.elements.regPassword.value,
+            };
+
+            if (!userData.email.endsWith('.edu') && !userData.email.includes('@university') && !userData.email.includes('.edu.my')) {
+                this.showNotification('Please use a valid university email address', 'warning');
+                return;
+            }
+
+            if (!this.validateRegistrationForm()) {
+                this.showNotification('Please complete all required fields correctly', 'warning');
+                return;
+            }
+
+            fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: userData.email, password: userData.password })
+            })
+            .then(res => res.json().then(data => ({ ok: res.ok, data })))
+            .then(({ ok, data }) => {
+                if (ok) {
+                    this.state.currentAdmin = { email: data.email, ...userData };
+                    this.showAdminDashboard();
+                    this.elements.adminName.textContent = `${userData.firstName} ${userData.lastName}`;
+                    this.showNotification(`Account created successfully! Welcome, ${userData.firstName}!`, 'success');
+                } else {
+                    this.showNotification(data.error || 'Registration failed', 'warning');
+                }
+            })
+            .catch(() => this.showNotification('Registration failed. Please try again.', 'danger'));
+        }
+
+        adminLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                fetch('/api/logout', { method: 'POST' })
+                    .finally(() => {
+                        this.state.currentAdmin = null;
+                        this.showLandingPage();
+                        this.showNotification('Successfully logged out', 'info');
+                    });
+            }
+        }
+
+        checkAdminSession() {
+            fetch('/api/session')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        this.state.currentAdmin = { email: data.email };
+                        this.elements.adminName.textContent = data.email;
+                        this.showAdminDashboard();
+                    }
+                })
+                .catch(() => {});
+        }
+
+        setupAdminFormValidation() {
+            if (this.elements.regPassword) {
+                this.elements.regPassword.addEventListener('input', () => {
+                    const password = this.elements.regPassword.value;
+                    this.updatePasswordValidationUI(password);
+                });
+            }
+
+            ['firstName', 'lastName', 'regEmail', 'universityId'].forEach(field => {
+                if (this.elements[field]) {
+                    this.elements[field].addEventListener('input', () => this.validateRegistrationForm());
+                }
+            });
+            if (this.elements.department) {
+                this.elements.department.addEventListener('change', () => this.validateRegistrationForm());
+            }
+        }
+
+        updatePasswordValidationUI(password) {
+            // Length check
+            const lengthCheck = document.getElementById('lengthCheck');
+            const hasLength = password.length >= 8;
+            lengthCheck.querySelector('.material-symbols-outlined').textContent = 
+                hasLength ? 'check_circle' : 'close';
+            lengthCheck.querySelector('.material-symbols-outlined').style.color = 
+                hasLength ? '#10b981' : '#ef4444';
+
+            // Number check
+            const numberCheck = document.getElementById('numberCheck');
+            const hasNumber = /\d/.test(password);
+            numberCheck.querySelector('.material-symbols-outlined').textContent = 
+                hasNumber ? 'check_circle' : 'close';
+            numberCheck.querySelector('.material-symbols-outlined').style.color = 
+                hasNumber ? '#10b981' : '#ef4444';
+
+            // Uppercase check
+            const uppercaseCheck = document.getElementById('uppercaseCheck');
+            const hasUppercase = /[A-Z]/.test(password);
+            uppercaseCheck.querySelector('.material-symbols-outlined').textContent = 
+                hasUppercase ? 'check_circle' : 'close';
+            uppercaseCheck.querySelector('.material-symbols-outlined').style.color = 
+                hasUppercase ? '#10b981' : '#ef4444';
+
+            // Special character check
+            const specialCheck = document.getElementById('specialCheck');
+            const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            specialCheck.querySelector('.material-symbols-outlined').textContent = 
+                hasSpecial ? 'check_circle' : 'close';
+            specialCheck.querySelector('.material-symbols-outlined').style.color = 
+                hasSpecial ? '#10b981' : '#ef4444';
+        }
+
+        validatePassword() {
+            const password = this.elements.regPassword.value;
+            const hasLength = password.length >= 8;
+            const hasNumber = /\d/.test(password);
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            
+            this.updatePasswordValidationUI(password);
+            this.validateRegistrationForm();
+            
+            return hasLength && hasNumber && hasUppercase && hasSpecial;
+        }
+
+        validatePasswordMatch() {
+            const password = this.elements.regPassword.value;
+            const confirmPassword = this.elements.confirmPassword.value;
+            const match = password === confirmPassword && password !== '';
+            
+            const matchDiv = document.getElementById('passwordMatch');
+            if (!match && confirmPassword !== '') {
+                matchDiv.classList.remove('hidden');
+            } else {
+                matchDiv.classList.add('hidden');
+            }
+            
+            this.validateRegistrationForm();
+            return match;
+        }
+
+        validateRegistrationForm() {
+            const firstName = this.elements.firstName.value.trim();
+            const lastName = this.elements.lastName.value.trim();
+            const email = this.elements.regEmail.value.trim();
+            const universityId = this.elements.universityId.value.trim();
+            const department = this.elements.department.value;
+            const passwordValid = this.validatePassword();
+            const passwordMatch = this.validatePasswordMatch();
+            const termsAgreed = this.elements.termsAgreement.checked;
+            
+            const allValid = firstName && lastName && email && universityId && department && 
+                           passwordValid && passwordMatch && termsAgreed;
+            
+            this.elements.adminRegisterSubmit.disabled = !allValid;
+            return allValid;
+        }
+
+        sendMessage() {
+            const message = this.elements.messageInput.value.trim();
+            if (!message || this.state.isTyping) return;
+
+            this.addMessageToChat(message, 'user');
+            this.elements.messageInput.value = '';
+            this.fetchBotResponse(message);
+        }
+
+        fetchBotResponse(userMessage) {
+            this.showTypingIndicator(true);
+
+            fetch('/get', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'msg=' + encodeURIComponent(userMessage)
+            })
+            .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data })))
+            .then(({ ok, status, data }) => {
+                this.showTypingIndicator(false);
+                if (!ok) {
+                    this.addMessageToChat(data.error || 'Sorry, something went wrong. Please try again.', 'ai');
+                    return;
+                }
+                if (data.response) {
+                    this.addMessageToChat(data.response, 'ai');
+                    if (data.response_source === 'crisis') {
+                        setTimeout(() => this.openCrisisModal(), 800);
+                    }
+                } else {
+                    this.addMessageToChat('Sorry, something went wrong. Please try again.', 'ai');
+                }
+            })
+            .catch(() => {
+                this.showTypingIndicator(false);
+                this.addMessageToChat('Unable to reach the server. Please try again.', 'ai');
+            });
+        }
+
+        endChat() {
+            if (!confirm('End this chat session and return to the homepage?')) return;
+
+            fetch('/reset', { method: 'POST' })
+                .finally(() => {
+                    this.state.chatHistory = [];
+                    this.elements.chatMessages.innerHTML = `
+                        <div class="chat-message flex">
+                            <div class="flex-1">
+                                <div class="bg-primary/10 dark:bg-primary/20 rounded-2xl rounded-tl-none p-4 max-w-[90%] md:max-w-[80%] inline-block animate-fade-in">
+                                    <p class="text-[#111617] dark:text-white">Hello! I'm your AI counselor. I'm here to listen and provide support. Everything you share is confidential. How are you feeling today?</p>
+                                    <p class="text-xs text-[#647e87] dark:text-gray-400 mt-2">Just now</p>
+                                </div>
+                            </div>
+                        </div>`;
+                    this.showLandingPage();
+                    this.showNotification('Chat ended. Your session has been cleared.', 'info');
+                });
+        }
+
+        addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message flex ${sender === 'user' ? 'justify-end' : ''} animate-fade-in`;
+            
+            const timestamp = new Date().toLocaleTimeString([], { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            
+            const messageId = Date.now();
+            
+            messageDiv.innerHTML = `
+                <div class="${sender === 'user' ? 'flex justify-end w-full' : 'flex-1'}">
+                    <div class="${sender === 'user' ? 'bg-primary text-white rounded-2xl rounded-tr-none' : 'bg-primary/10 dark:bg-primary/20 rounded-2xl rounded-tl-none'} p-4 max-w-[90%] md:max-w-[80%] inline-block">
+                        <p>${this.escapeHtml(message)}</p>
+                        <p class="text-xs ${sender === 'user' ? 'text-white/70' : 'text-[#647e87] dark:text-gray-400'} mt-2">${timestamp}</p>
+                    </div>
+                </div>
+            `;
+            
+            this.elements.chatMessages.appendChild(messageDiv);
+            this.elements.chatMessages.scrollTop = this.elements.chatMessages.scrollHeight;
+            
+            // Save to chat history
+            this.state.chatHistory.push({
+                id: messageId,
+                sender,
+                message,
+                timestamp: new Date().toISOString()
+            });
+        }
+
+        showTypingIndicator(show) {
+            if (show) {
+                this.elements.typingIndicator.classList.remove('hidden');
+                this.state.isTyping = true;
+            } else {
+                this.elements.typingIndicator.classList.add('hidden');
+                this.state.isTyping = false;
+            }
+            this.elements.chatMessages.scrollTop = this.elements.chatMessages.scrollHeight;
+        }
+
+        toggleTheme() {
+            const html = document.documentElement;
+            const icon = this.elements.themeToggle.querySelector('.material-symbols-outlined');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.textContent = 'dark_mode';
+                this.showNotification('Switched to light mode', 'info');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.textContent = 'light_mode';
+                this.showNotification('Switched to dark mode', 'info');
+            }
+        }
+
+        loadUserPreferences() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                this.elements.themeToggle.querySelector('.material-symbols-outlined').textContent = 'light_mode';
+            }
+        }
+
+        openModal(modalType) {
+            const modalData = this.state.modalContents[modalType];
+            if (!modalData) return;
+
+            this.openAdminPanel(modalData.title, modalData.content, false);
+        }
+
+        openCrisisModal() {
+            const loading = `
+                <div class="space-y-4 text-center py-8">
+                    <p class="text-[#647e87] dark:text-gray-400">Loading crisis resources...</p>
+                </div>`;
+            this.openAdminPanel('Crisis Resources', loading, false);
+
+            fetch('/api/resources')
+                .then(res => res.json())
+                .then(data => {
+                    const labels = {
+                        hotline: 'National Hotlines',
+                        university: 'University Resources',
+                        online: 'Online Resources',
+                    };
+                    let sections = `
+                        <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-red-800 dark:text-red-200 font-bold">
+                                If this is an emergency, call 999 or Talian Kasih 15999 immediately.
+                            </p>
+                        </div>`;
+
+                    const grouped = data.grouped || {};
+                    for (const [cat, heading] of Object.entries(labels)) {
+                        const items = grouped[cat] || [];
+                        if (!items.length) continue;
+                        sections += `<h4 class="font-bold text-primary mt-4">${heading}</h4><div class="space-y-3 mt-2">`;
+                        items.forEach(r => {
+                            const contact = this.escapeHtml(r.contact || '');
+                            const desc = r.description ? ` — ${this.escapeHtml(r.description)}` : '';
+                            sections += `
+                                <div class="flex items-center justify-between p-3 bg-primary/5 rounded-lg gap-3">
+                                    <div class="min-w-0">
+                                        <p class="font-semibold">${this.escapeHtml(r.title)}</p>
+                                        <p class="text-xs text-[#647e87] dark:text-gray-400">${contact}${desc}</p>
+                                    </div>
+                                    <button type="button" class="copy-btn shrink-0 px-3 py-1 bg-primary text-white text-xs rounded-full hover:bg-[#3ba8cc]" data-text="${contact}">Copy</button>
+                                </div>`;
+                        });
+                        sections += '</div>';
+                    }
+
+                    sections += `
+                        <p class="text-xs text-[#647e87] dark:text-gray-500 text-center mt-6">
+                            You are not alone. Help is available 24/7.
+                        </p>`;
+                    this.elements.modalContent.innerHTML = sections;
+                })
+                .catch(() => {
+                    this.elements.modalContent.innerHTML = `
+                        <p class="text-sm text-red-600">Could not load resources. Call 999 or Talian Kasih 15999 in an emergency.</p>`;
+                });
+        }
+
+        openAdminPanel(title, html, wide = true) {
+            this.elements.modalTitle.textContent = title;
+            this.elements.modalContent.innerHTML = html;
+            this.elements.modalPanel.classList.toggle('max-w-md', !wide);
+            this.elements.modalPanel.classList.toggle('max-w-3xl', wide);
+            this.elements.modal.classList.remove('hidden');
+
+            setTimeout(() => {
+                this.elements.modal.style.opacity = '1';
+            }, 10);
+        }
+
+        adminFetch(url, options = {}) {
+            return fetch(url, options).then(res =>
+                res.json().then(data => ({ ok: res.ok, status: res.status, data }))
+            );
+        }
+
+        openAnalyticsPanel() {
+            this.openAdminPanel('View Analytics', `
+                <div class="space-y-4">
+                    <div class="flex flex-wrap gap-2">
+                        ${['7d', '30d', '90d'].map(p => `
+                            <button type="button" data-period="${p}" class="analytics-period px-3 py-1.5 text-sm rounded-full border border-[#dce3e5] dark:border-[#2a3a40] hover:bg-primary/10">
+                                ${p === '7d' ? '7 Days' : p === '30d' ? '30 Days' : '90 Days'}
+                            </button>`).join('')}
+                        <a href="/api/analytics/export?period=30d" class="ml-auto px-3 py-1.5 text-sm rounded-full bg-primary text-white hover:bg-[#3ba8cc]">Export CSV</a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div class="bg-primary/5 rounded-lg p-3"><p class="text-xs text-[#647e87]">Messages</p><p id="anTotal" class="text-xl font-bold">-</p></div>
+                        <div class="bg-primary/5 rounded-lg p-3"><p class="text-xs text-[#647e87]">Sessions</p><p id="anSessions" class="text-xl font-bold">-</p></div>
+                        <div class="bg-primary/5 rounded-lg p-3"><p class="text-xs text-[#647e87]">Avg / Session</p><p id="anAvg" class="text-xl font-bold">-</p></div>
+                        <div class="bg-primary/5 rounded-lg p-3"><p class="text-xs text-[#647e87]">Peak Hour</p><p id="anPeak" class="text-xl font-bold">-</p></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-background-light dark:bg-[#111d21] rounded-lg p-3"><canvas id="analyticsDailyChart" height="180"></canvas></div>
+                        <div class="bg-background-light dark:bg-[#111d21] rounded-lg p-3"><canvas id="analyticsSentimentChart" height="180"></canvas></div>
+                    </div>
+                    <div class="bg-background-light dark:bg-[#111d21] rounded-lg p-3"><canvas id="analyticsIntentChart" height="140"></canvas></div>
+                    <div class="bg-background-light dark:bg-[#111d21] rounded-lg p-3"><canvas id="analyticsCrisisChart" height="120"></canvas></div>
+                </div>
+            `);
+
+            const loadAnalytics = (period = '7d') => {
+                this.adminFetch(`/api/analytics?period=${period}`)
+                    .then(({ ok, data }) => {
+                        if (!ok) throw new Error(data.error || 'Failed to load analytics');
+                        document.getElementById('anTotal').textContent = data.total_messages.toLocaleString();
+                        document.getElementById('anSessions').textContent = data.unique_sessions.toLocaleString();
+                        document.getElementById('anAvg').textContent = data.avg_messages_per_session;
+                        document.getElementById('anPeak').textContent = data.peak_hour
+                            ? `${data.peak_hour.hour}:00 (${data.peak_hour.count})`
+                            : 'N/A';
+
+                        this.renderAnalyticsCharts(data);
+                    })
+                    .catch(() => this.showNotification('Could not load analytics', 'warning'));
+            };
+
+            this.elements.modalContent.querySelectorAll('.analytics-period').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.elements.modalContent.querySelectorAll('.analytics-period').forEach(b => {
+                        b.classList.remove('bg-primary', 'text-white');
+                    });
+                    btn.classList.add('bg-primary', 'text-white');
+                    loadAnalytics(btn.dataset.period);
+                });
+            });
+
+            const firstBtn = this.elements.modalContent.querySelector('.analytics-period');
+            if (firstBtn) {
+                firstBtn.classList.add('bg-primary', 'text-white');
+                loadAnalytics('7d');
+            }
+        }
+
+        renderAnalyticsCharts(data) {
+            if (this.state.analyticsCharts) {
+                this.state.analyticsCharts.forEach(chart => chart.destroy());
+            }
+            this.state.analyticsCharts = [];
+
+            const dailyLabels = data.daily_conversations.map(d => d.date);
+            const dailyCounts = data.daily_conversations.map(d => d.count);
+
+            const dailyCtx = document.getElementById('analyticsDailyChart');
+            if (dailyCtx) {
+                this.state.analyticsCharts.push(new Chart(dailyCtx, {
+                    type: 'line',
+                    data: {
+                        labels: dailyLabels,
+                        datasets: [{
+                            label: 'Conversations',
+                            data: dailyCounts,
+                            borderColor: '#4cbfe6',
+                            backgroundColor: 'rgba(76, 191, 230, 0.15)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: { plugins: { title: { display: true, text: 'Daily Conversations' } }, scales: { y: { beginAtZero: true } } }
+                }));
+            }
+
+            const sentimentCtx = document.getElementById('analyticsSentimentChart');
+            if (sentimentCtx) {
+                this.state.analyticsCharts.push(new Chart(sentimentCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Positive', 'Negative', 'Neutral'],
+                        datasets: [{
+                            data: [data.sentiment.positive, data.sentiment.negative, data.sentiment.neutral],
+                            backgroundColor: ['#10b981', '#ef4444', '#4cbfe6']
+                        }]
+                    },
+                    options: { plugins: { title: { display: true, text: 'Sentiment Breakdown' } } }
+                }));
+            }
+
+            const crisisCtx = document.getElementById('analyticsCrisisChart');
+            if (crisisCtx) {
+                this.state.analyticsCharts.push(new Chart(crisisCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.crisis_trend.map(d => d.date),
+                        datasets: [{
+                            label: 'Crisis Interventions',
+                            data: data.crisis_trend.map(d => d.count),
+                            backgroundColor: '#f59e0b'
+                        }]
+                    },
+                    options: { plugins: { title: { display: true, text: 'Crisis Trend' } }, scales: { y: { beginAtZero: true } } }
+                }));
+            }
+
+            const intentCtx = document.getElementById('analyticsIntentChart');
+            if (intentCtx && data.intent_breakdown && data.intent_breakdown.length) {
+                this.state.analyticsCharts.push(new Chart(intentCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.intent_breakdown.map(item => item.intent),
+                        datasets: [{
+                            label: 'Intent Count',
+                            data: data.intent_breakdown.map(item => item.count),
+                            backgroundColor: '#6366f1'
+                        }]
+                    },
+                    options: {
+                        plugins: { title: { display: true, text: 'Intent Classification Breakdown' } },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                }));
+            }
+        }
+
+        openResourceManager() {
+            const renderList = (resources) => {
+                if (!resources.length) {
+                    return '<p class="text-sm text-[#647e87]">No resources yet.</p>';
+                }
+                return resources.map(r => `
+                    <div class="border border-[#dce3e5] dark:border-[#2a3a40] rounded-lg p-3 space-y-2" data-id="${r.id}">
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <p class="font-semibold">${this.escapeHtml(r.title)}</p>
+                                <p class="text-xs capitalize text-[#647e87]">${this.escapeHtml(r.category)} · ${this.escapeHtml(r.contact)}</p>
+                                <p class="text-xs text-[#647e87]">${this.escapeHtml(r.description)}</p>
+                            </div>
+                            <span class="text-xs px-2 py-1 rounded-full ${r.is_active ? 'bg-success/10 text-success' : 'bg-danger/10 text-danger'}">
+                                ${r.is_active ? 'Active' : 'Inactive'}
+                            </span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="button" class="edit-resource text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-id="${r.id}">Edit</button>
+                            <button type="button" class="delete-resource text-xs px-2 py-1 rounded bg-danger/10 text-danger" data-id="${r.id}">Deactivate</button>
+                        </div>
+                    </div>
+                `).join('');
+            };
+
+            const formHtml = `
+                <form id="resourceForm" class="grid grid-cols-1 md:grid-cols-2 gap-3 border border-[#dce3e5] dark:border-[#2a3a40] rounded-lg p-3">
+                    <input type="hidden" id="resourceId" value="">
+                    <input id="resourceTitle" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]" placeholder="Title" required>
+                    <select id="resourceCategory" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]">
+                        <option value="hotline">Hotline</option>
+                        <option value="university">University</option>
+                        <option value="online">Online</option>
+                    </select>
+                    <input id="resourceContact" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]" placeholder="Contact (phone/email)" required>
+                    <input id="resourceSort" type="number" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]" placeholder="Sort order" value="0">
+                    <input id="resourceDescription" class="md:col-span-2 rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]" placeholder="Description">
+                    <div class="md:col-span-2 flex gap-2">
+                        <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg text-sm">Save Resource</button>
+                        <button type="button" id="resourceCancelEdit" class="px-4 py-2 border rounded-lg text-sm hidden">Cancel Edit</button>
+                    </div>
+                </form>
+                <div id="resourceList" class="space-y-3 max-h-64 overflow-y-auto"></div>
+            `;
+
+            this.openAdminPanel('Manage Resources', formHtml);
+
+            const loadResources = () => {
+                this.adminFetch('/api/admin/resources')
+                    .then(({ ok, data }) => {
+                        if (!ok) throw new Error();
+                        document.getElementById('resourceList').innerHTML = renderList(data.resources);
+                        this.bindResourceActions(data.resources, loadResources);
+                    })
+                    .catch(() => this.showNotification('Could not load resources', 'warning'));
+            };
+
+            const form = document.getElementById('resourceForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const id = document.getElementById('resourceId').value;
+                const payload = {
+                    title: document.getElementById('resourceTitle').value.trim(),
+                    category: document.getElementById('resourceCategory').value,
+                    contact: document.getElementById('resourceContact').value.trim(),
+                    description: document.getElementById('resourceDescription').value.trim(),
+                    sort_order: parseInt(document.getElementById('resourceSort').value || '0', 10),
+                    is_active: true
+                };
+
+                const req = id
+                    ? this.adminFetch(`/api/admin/resources/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+                    : this.adminFetch('/api/admin/resources', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+
+                req.then(({ ok, data }) => {
+                    if (!ok) {
+                        this.showNotification(data.error || 'Save failed', 'warning');
+                        return;
+                    }
+                    form.reset();
+                    document.getElementById('resourceId').value = '';
+                    document.getElementById('resourceCancelEdit').classList.add('hidden');
+                    this.showNotification('Resource saved', 'success');
+                    loadResources();
+                });
+            });
+
+            document.getElementById('resourceCancelEdit').addEventListener('click', () => {
+                form.reset();
+                document.getElementById('resourceId').value = '';
+                document.getElementById('resourceCancelEdit').classList.add('hidden');
+            });
+
+            loadResources();
+        }
+
+        bindResourceActions(resources, reload) {
+            const byId = Object.fromEntries(resources.map(r => [String(r.id), r]));
+
+            this.elements.modalContent.querySelectorAll('.edit-resource').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const resource = byId[btn.dataset.id];
+                    if (!resource) return;
+                    document.getElementById('resourceId').value = resource.id;
+                    document.getElementById('resourceTitle').value = resource.title;
+                    document.getElementById('resourceCategory').value = resource.category;
+                    document.getElementById('resourceContact').value = resource.contact;
+                    document.getElementById('resourceDescription').value = resource.description;
+                    document.getElementById('resourceSort').value = resource.sort_order;
+                    document.getElementById('resourceCancelEdit').classList.remove('hidden');
+                });
+            });
+
+            this.elements.modalContent.querySelectorAll('.delete-resource').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!confirm('Deactivate this resource?')) return;
+                    this.adminFetch(`/api/admin/resources/${btn.dataset.id}`, { method: 'DELETE' })
+                        .then(({ ok, data }) => {
+                            if (!ok) {
+                                this.showNotification(data.error || 'Delete failed', 'warning');
+                                return;
+                            }
+                            this.showNotification('Resource deactivated', 'success');
+                            reload();
+                        });
+                });
+            });
+        }
+
+        openUserManagement() {
+            const renderUsers = (users) => users.map(u => `
+                <div class="border border-[#dce3e5] dark:border-[#2a3a40] rounded-lg p-3 flex items-center justify-between gap-3">
+                    <div>
+                        <p class="font-semibold">${this.escapeHtml(u.email)}</p>
+                        <p class="text-xs text-[#647e87] capitalize">${this.escapeHtml(u.role)} · ${u.created_at || '—'}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs px-2 py-1 rounded-full ${u.is_active ? 'bg-success/10 text-success' : 'bg-danger/10 text-danger'}">${u.is_active ? 'Active' : 'Inactive'}</span>
+                        <button type="button" class="toggle-user text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-id="${u.id}" data-active="${u.is_active}">${u.is_active ? 'Deactivate' : 'Activate'}</button>
+                    </div>
+                </div>
+            `).join('');
+
+            this.openAdminPanel('User Management', `
+                <form id="userForm" class="grid grid-cols-1 md:grid-cols-2 gap-3 border border-[#dce3e5] dark:border-[#2a3a40] rounded-lg p-3 mb-4">
+                    <input id="newUserEmail" type="email" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]" placeholder="Email" required>
+                    <input id="newUserPassword" type="password" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]" placeholder="Password" required>
+                    <select id="newUserRole" class="rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]">
+                        <option value="admin">Admin</option>
+                        <option value="counselor">Counselor</option>
+                    </select>
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg text-sm">Add User</button>
+                </form>
+                <div id="userList" class="space-y-3 max-h-72 overflow-y-auto"></div>
+            `);
+
+            const loadUsers = () => {
+                this.adminFetch('/api/admin/users')
+                    .then(({ ok, data }) => {
+                        if (!ok) throw new Error();
+                        document.getElementById('userList').innerHTML = renderUsers(data.users);
+                        document.querySelectorAll('#userList .toggle-user').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                const active = btn.dataset.active === 'true';
+                                this.adminFetch(`/api/admin/users/${btn.dataset.id}`, {
+                                    method: 'PUT',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ is_active: !active })
+                                }).then(({ ok, data }) => {
+                                    if (!ok) {
+                                        this.showNotification(data.error || 'Update failed', 'warning');
+                                        return;
+                                    }
+                                    this.showNotification('User updated', 'success');
+                                    loadUsers();
+                                });
+                            });
+                        });
+                    })
+                    .catch(() => this.showNotification('Could not load users', 'warning'));
+            };
+
+            document.getElementById('userForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const payload = {
+                    email: document.getElementById('newUserEmail').value.trim(),
+                    password: document.getElementById('newUserPassword').value,
+                    role: document.getElementById('newUserRole').value
+                };
+                this.adminFetch('/api/admin/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).then(({ ok, data }) => {
+                    if (!ok) {
+                        this.showNotification(data.error || 'Could not create user', 'warning');
+                        return;
+                    }
+                    e.target.reset();
+                    this.showNotification('User created', 'success');
+                    loadUsers();
+                });
+            });
+
+            loadUsers();
+        }
+
+        openSystemSettings() {
+            this.openAdminPanel('System Settings', `
+                <form id="settingsForm" class="space-y-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Crisis Keywords (comma-separated)</label>
+                        <textarea id="settingCrisisKeywords" rows="2" class="w-full rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Crisis Response Message</label>
+                        <textarea id="settingCrisisResponse" rows="3" class="w-full rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Default Fallback Response</label>
+                        <textarea id="settingDefaultResponse" rows="2" class="w-full rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21]"></textarea>
+                    </div>
+                    <label class="flex items-center gap-2 text-sm">
+                        <input id="settingMaintenance" type="checkbox" class="rounded border-[#dce3e5]">
+                        Maintenance mode (disable student chat)
+                    </label>
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg text-sm">Save Settings</button>
+                </form>
+                <div class="border-t border-[#dce3e5] dark:border-[#2a3a40] pt-4">
+                    <h4 class="font-semibold mb-3">Change Your Password</h4>
+                    <form id="changePasswordForm" class="space-y-3">
+                        <input id="currentPassword" type="password" placeholder="Current password" class="w-full rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21] px-3 py-2 text-sm" required>
+                        <input id="newPassword" type="password" placeholder="New password (min 8 characters)" class="w-full rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21] px-3 py-2 text-sm" required>
+                        <input id="confirmNewPassword" type="password" placeholder="Confirm new password" class="w-full rounded-lg border-[#dce3e5] dark:border-[#2a3a40] dark:bg-[#111d21] px-3 py-2 text-sm" required>
+                        <button type="submit" class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm hover:bg-primary/20">Update Password</button>
+                    </form>
+                </div>
+            `);
+
+            this.adminFetch('/api/admin/settings')
+                .then(({ ok, data }) => {
+                    if (!ok) throw new Error();
+                    const s = data.settings;
+                    document.getElementById('settingCrisisKeywords').value = s.crisis_keywords || '';
+                    document.getElementById('settingCrisisResponse').value = s.crisis_response || '';
+                    document.getElementById('settingDefaultResponse').value = s.default_response || '';
+                    document.getElementById('settingMaintenance').checked = (s.maintenance_mode || 'false') === 'true';
+                })
+                .catch(() => this.showNotification('Could not load settings', 'warning'));
+
+            document.getElementById('settingsForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const payload = {
+                    settings: {
+                        crisis_keywords: document.getElementById('settingCrisisKeywords').value.trim(),
+                        crisis_response: document.getElementById('settingCrisisResponse').value.trim(),
+                        default_response: document.getElementById('settingDefaultResponse').value.trim(),
+                        maintenance_mode: document.getElementById('settingMaintenance').checked ? 'true' : 'false'
+                    }
+                };
+                this.adminFetch('/api/admin/settings', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).then(({ ok, data }) => {
+                    if (!ok) {
+                        this.showNotification(data.error || 'Save failed', 'warning');
+                        return;
+                    }
+                    this.showNotification('Settings saved', 'success');
+                });
+            });
+
+            document.getElementById('changePasswordForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newPw = document.getElementById('newPassword').value;
+                const confirmPw = document.getElementById('confirmNewPassword').value;
+                if (newPw !== confirmPw) {
+                    this.showNotification('New passwords do not match', 'warning');
+                    return;
+                }
+                this.adminFetch('/api/admin/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        current_password: document.getElementById('currentPassword').value,
+                        new_password: newPw,
+                    }),
+                }).then(({ ok, data }) => {
+                    if (!ok) {
+                        this.showNotification(data.error || 'Password update failed', 'warning');
+                        return;
+                    }
+                    this.showNotification('Password updated successfully', 'success');
+                    document.getElementById('changePasswordForm').reset();
+                });
+            });
+        }
+
+        closeModal() {
+            this.elements.modal.style.opacity = '0';
+            setTimeout(() => {
+                this.elements.modal.classList.add('hidden');
+            }, 200);
+        }
+
+        showFeatureInfo(feature) {
+            const info = {
+                private: "Chat sessions use anonymous IDs. Personal details you type are stored only to improve support quality.",
+                support: "Available 24/7, including holidays. Average response time is under 3 seconds.",
+                care: "Trained human counselors monitor conversations to ensure safety and provide escalation when needed."
+            };
+            
+            this.showNotification(info[feature] || "Feature information", 'info');
+        }
+
+        toggleVoiceInput() {
+            this.showNotification('Voice input is coming soon!', 'info');
+        }
+
+        updateStats() {
+            this.elements.usersHelped.textContent = '24/7';
+            this.elements.avgResponseTime.textContent = '< 10s';
+        }
+
+        updateDashboardStats() {
+            fetch('/api/dashboard')
+                .then(res => {
+                    if (!res.ok) throw new Error('Unauthorized');
+                    return res.json();
+                })
+                .then(data => {
+                    const total = data.total_chats ?? data.total ?? 0;
+                    const crisis = data.total_crisis_cases ?? data.crisis ?? 0;
+
+                    this.elements.totalConversations.textContent = total.toLocaleString();
+                    this.elements.crisisInterventions.textContent = crisis.toLocaleString();
+
+                    const topEmotion = data.most_common_emotion || { label: 'none', count: 0 };
+                    const topIntent = data.most_common_intent || { label: 'none', count: 0 };
+
+                    this.elements.mostCommonEmotion.textContent =
+                        topEmotion.label === 'none' ? '—' : topEmotion.label.replace(/_/g, ' ');
+                    this.elements.mostCommonEmotionCount.textContent =
+                        topEmotion.count > 0 ? `${topEmotion.count} occurrence${topEmotion.count === 1 ? '' : 's'}` : 'No data yet';
+
+                    this.elements.mostCommonIntent.textContent =
+                        topIntent.label === 'none' ? '—' : topIntent.label.replace(/_/g, ' ');
+                    this.elements.mostCommonIntentCount.textContent =
+                        topIntent.count > 0 ? `${topIntent.count} occurrence${topIntent.count === 1 ? '' : 's'}` : 'No data yet';
+
+                    this.renderDashboardCharts(data);
+
+                    const container = this.elements.recentConversations;
+                    if (!data.recent_chats.length) {
+                        container.innerHTML = '<p class="text-sm text-[#647e87] dark:text-gray-400">No conversations yet.</p>';
+                        return;
+                    }
+
+                    container.innerHTML = data.recent_chats.map(chat => {
+                        const emotionClass = chat.emotion === 'joy'
+                            ? 'bg-success/10 text-success'
+                            : ['sadness', 'anger', 'fear', 'disgust'].includes(chat.emotion)
+                                ? 'bg-warning/10 text-warning'
+                                : 'bg-primary/10 text-primary';
+                        const intentLabel = chat.intent || 'unclassified';
+                        return `
+                            <div class="bg-white dark:bg-[#1a2b32] rounded-lg p-3">
+                                <div class="flex items-center justify-between gap-2">
+                                    <div class="min-w-0">
+                                        <p class="font-medium truncate">${this.escapeHtml(chat.user_msg)}</p>
+                                        <p class="text-xs text-[#647e87] dark:text-gray-400">${chat.timestamp}</p>
+                                    </div>
+                                    <div class="shrink-0 flex flex-col items-end gap-1">
+                                        <span class="${emotionClass} text-xs px-2 py-1 rounded-full capitalize">${this.escapeHtml(chat.emotion || chat.sentiment || 'neutral')}</span>
+                                        <span class="bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 text-xs px-2 py-1 rounded-full capitalize">${this.escapeHtml(intentLabel.replace(/_/g, ' '))}</span>
+                                    </div>
+                                </div>
+                            </div>`;
+                    }).join('');
+                })
+                .catch(() => {
+                    this.showNotification('Could not load dashboard data', 'warning');
+                });
+        }
+
+        renderDashboardCharts(data) {
+            if (this.state.dashboardCharts) {
+                this.state.dashboardCharts.forEach(chart => chart.destroy());
+            }
+            this.state.dashboardCharts = [];
+
+            const emotionBreakdown = data.emotion_breakdown || [];
+            const intentBreakdown = data.intent_breakdown || [];
+
+            const emotionColors = {
+                joy: '#10b981',
+                sadness: '#3b82f6',
+                anger: '#ef4444',
+                fear: '#f59e0b',
+                disgust: '#8b5cf6',
+                surprise: '#ec4899',
+                neutral: '#6b7280',
+                unknown: '#9ca3af'
+            };
+
+            const emotionCtx = document.getElementById('dashboardEmotionChart');
+            if (emotionCtx) {
+                this.state.dashboardCharts.push(new Chart(emotionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: emotionBreakdown.map(item => item.emotion),
+                        datasets: [{
+                            data: emotionBreakdown.map(item => item.count),
+                            backgroundColor: emotionBreakdown.map(
+                                item => emotionColors[item.emotion] || '#4cbfe6'
+                            )
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: { position: 'bottom' },
+                            title: { display: false }
+                        }
+                    }
+                }));
+            }
+
+            const intentCtx = document.getElementById('dashboardIntentChart');
+            if (intentCtx) {
+                this.state.dashboardCharts.push(new Chart(intentCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: intentBreakdown.map(item => item.intent.replace(/_/g, ' ')),
+                        datasets: [{
+                            label: 'Messages',
+                            data: intentBreakdown.map(item => item.count),
+                            backgroundColor: '#6366f1',
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+                    }
+                }));
+            }
+        }
+
+        refreshDashboard() {
+            this.updateDashboardStats();
+            this.showNotification('Dashboard refreshed successfully', 'success');
+        }
+
+        startStatsAnimation() {
+            setInterval(() => this.updateStats(), 30000);
+        }
+
+        copyToClipboard(text) {
+            navigator.clipboard.writeText(text).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            });
+        }
+
+        showNotification(message, type = 'info') {
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = `notification fixed top-4 right-4 px-4 py-3 rounded-lg shadow-lg z-[1000] animate-fade-in ${
+                type === 'success' ? 'bg-success/90 text-white' :
+                type === 'warning' ? 'bg-warning/90 text-white' :
+                type === 'danger' ? 'bg-danger/90 text-white' :
+                'bg-primary/90 text-white'
+            }`;
+            notification.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">${
+                        type === 'success' ? 'check_circle' :
+                        type === 'warning' ? 'warning' :
+                        type === 'danger' ? 'error' :
+                        'info'
+                    }</span>
+                    <span class="text-sm font-medium">${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(20px)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    }
+</script>
+
+</body>
+</html>
